@@ -1,0 +1,60 @@
+@import "variables"
+@import "breakpoints"
+
+.welcome
+  display: flex
+  justify-content: space-around
+  padding: 5rem 0
+
+  @include md
+    display: block
+    text-align: center
+
+  &--title
+    //width: 50%
+    display: flex
+    order: 2
+    justify-content: center
+    align-items: center
+
+    @include md
+      //width: 100%
+      display: block
+
+    h1
+      font-weight: $font-weight-extra-bold
+      font-size: 5rem
+
+      @include rwd(970)
+        font-size: 3rem
+
+      div
+        color: red
+        position: relative
+        height: 100px
+
+
+        @include rwd(970)
+          height: 60px
+
+        span
+          width: 100%
+          color: $tertiary-color
+          position: absolute
+          bottom: 0
+          left: 0
+
+  &--logo
+    //width: 50%
+    display: flex
+    order: 1
+    justify-content: center
+    align-items: center
+
+    @include md
+      //width: 100%
+      padding-top: 1rem
+
+    img
+      width: 200px
+      height: 200px

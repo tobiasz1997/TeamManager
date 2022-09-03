@@ -1,0 +1,26 @@
+<tw-shape-divider-svg></tw-shape-divider-svg>
+<div class="dashboard">
+  <app-dashboard-welcome></app-dashboard-welcome>
+
+  <app-carousel (leftArrowClick$)="decrement()" (rightArrowClick$)="increment()" [isAuto]="true">
+    <ng-container [ngSwitch]="indexOfArray">
+      <ng-container *ngFor="let value of arrayOfValues; let i = index">
+        <ng-container
+          *ngSwitchCase="i"
+          [ngTemplateOutlet]="content"
+          [ngTemplateOutletContext]="{ value: value }"></ng-container>
+      </ng-container>
+    </ng-container>
+  </app-carousel>
+
+  <app-dashboard-app-features></app-dashboard-app-features>
+</div>
+
+<ng-template #content let-value="value">
+  <div
+    class="tutorial"
+    @carouselAnimation
+    [ngStyle]="{ background: value.color }">
+    {{ value.value }}
+  </div>
+</ng-template>

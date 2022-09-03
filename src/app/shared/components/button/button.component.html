@@ -1,0 +1,16 @@
+<button
+  (click)="handleClick()"
+  [type]="type"
+  [disabled]="disabled"
+  [ngClass]="{
+    'button__primary': color === 'primary',
+    'button__secondary' : color === 'secondary',
+    'button__transparent': color === 'transparent',
+    'button__small' : size === 'small',
+    'button__default' : size === 'default',
+    'button__large' : size === 'large',
+    'button__disabled': disabled
+  }"
+>
+  {{ label | firstLetterUppercase }}
+</button>

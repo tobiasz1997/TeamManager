@@ -1,0 +1,17 @@
+<div class="carousel">
+  <div class="carousel__arrow">
+    <button (click)="onLeftArrowClick()">
+      <span class="material-icons-outlined">arrow_back_ios</span>
+    </button>
+  </div>
+
+  <div class="carousel__content">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="carousel__arrow">
+    <button (click)="onRightArrowClick()">
+      <span class="material-icons-outlined">arrow_forward_ios</span>
+    </button>
+  </div>
+</div>
