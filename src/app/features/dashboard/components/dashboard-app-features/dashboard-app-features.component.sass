@@ -1,0 +1,44 @@
+@import "variables"
+@import "breakpoints"
+@import '/src/app/features/dashboard/styles/dashboard-styles.sass'
+
+.features
+  & > * + *
+    padding-top: 3rem
+
+  &__section
+    display: grid
+    grid-template-columns: repeat(2, minmax(0,1fr))
+    grid-column-gap: 1.5rem
+    grid-row-gap: 1.5rem
+
+    @include md
+      grid-template-columns: repeat(1, minmax(0,1fr))
+
+    &--image
+      width: 100%
+      overflow: hidden
+      border-radius: $border-radius-lg
+      box-shadow: $box-shadow-md
+      order: unset
+
+      @include md
+        order: 2
+
+    &--description
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      justify-content: center
+      order: unset
+
+      @include md
+        order: 1
+
+      &>h4
+        color: $primary-color
+        font-size: $font-xl
+        margin: 0
+
+      &>p
+        margin-top: 1rem

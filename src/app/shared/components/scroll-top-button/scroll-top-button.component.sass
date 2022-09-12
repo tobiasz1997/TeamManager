@@ -1,0 +1,22 @@
+@import "variables"
+@import "breakpoints"
+
+button
+  position: fixed
+  bottom: 2rem
+  right: 2rem
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 0.5rem
+  cursor: pointer
+  border-radius: $border-radius-lg
+  border: 2px solid $tertiary-color
+
+  > span
+    color: $tertiary-color
+
+  &:hover
+    box-shadow: $box-shadow-md-hover
+
+

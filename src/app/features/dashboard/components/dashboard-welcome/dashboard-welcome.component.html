@@ -1,0 +1,16 @@
+<div class="welcome">
+  <div class="welcome--logo">
+    <img
+      alt="TeamManager Logo"
+      src="assets/team-manager-logo.png"/>
+  </div>
+  <div class="welcome--title">
+    <h1>Manage your
+      <div>
+          <span *ngIf="appFeatures" @myTrigger>
+                  {{ appFeatures }}
+          </span>
+      </div>
+    </h1>
+  </div>
+</div>

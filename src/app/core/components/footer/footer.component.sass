@@ -1,0 +1,24 @@
+@import "variables"
+@import "breakpoints"
+
+footer
+  height: 3rem
+  background: $tw-background-color
+  padding: 0.5rem 5rem
+  box-shadow: $box-shadow-top
+  z-index: 200
+  margin-top: 1rem
+
+  div
+    max-width: $max-layout-width
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: auto
+
+  @include sm
+    padding: 0.5rem 1rem
+
+  img
+    width: 20px
+    height: 20px

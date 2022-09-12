@@ -1,0 +1,31 @@
+@import 'variables'
+
+.carousel
+  display: flex
+  min-height: 400px
+
+  &__content
+    width: 100%
+    overflow: hidden
+    background: transparent
+
+  &__arrow
+    display: flex
+    align-items: center
+    margin: 0.5rem 1rem
+
+    > button
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: 0.5rem
+      cursor: pointer
+      border-radius: $border-radius-lg
+      border: 2px solid $tertiary-color
+
+      > span
+        color: $tertiary-color
+
+      &:hover
+        box-shadow: $box-shadow-md-hover
+
