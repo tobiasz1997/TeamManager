@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { ButtonComponent } from './components/button/button.component';
 import { FirstLetterUppercasePipe } from './pipes/first-letter-uppercase.pipe';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { ScrollTopButtonComponent } from './components/scroll-top-button/scroll-top-button.component';
 
 @NgModule({
   imports: [
@@ -11,12 +12,14 @@ import { CarouselComponent } from './components/carousel/carousel.component';
   declarations: [
     ButtonComponent,
     FirstLetterUppercasePipe,
-    CarouselComponent
+    CarouselComponent,
+    ScrollTopButtonComponent
   ],
-    exports: [
-        ButtonComponent,
-        CarouselComponent
-    ],
+  exports: [
+    ButtonComponent,
+    CarouselComponent,
+    ScrollTopButtonComponent
+  ],
   providers: [],
 })
 export class SharedModule {}

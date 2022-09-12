@@ -1,19 +1,29 @@
 <tw-shape-divider-svg></tw-shape-divider-svg>
+<app-scroll-top-button></app-scroll-top-button>
 <div class="dashboard">
-  <app-dashboard-welcome></app-dashboard-welcome>
+  <section>
+    <app-dashboard-welcome></app-dashboard-welcome>
+  </section>
 
-  <app-carousel (leftArrowClick$)="decrement()" (rightArrowClick$)="increment()" [isAuto]="true">
-    <ng-container [ngSwitch]="indexOfArray">
-      <ng-container *ngFor="let value of arrayOfValues; let i = index">
-        <ng-container
-          *ngSwitchCase="i"
-          [ngTemplateOutlet]="content"
-          [ngTemplateOutletContext]="{ value: value }"></ng-container>
+  <section>
+    <h2 class="section--title">How does it work?</h2>
+    <app-carousel (leftArrowClick$)="decrement()" (rightArrowClick$)="increment()" [isAuto]="true">
+      <ng-container [ngSwitch]="indexOfArray">
+        <ng-container *ngFor="let value of arrayOfValues; let i = index">
+          <ng-container
+            *ngSwitchCase="i"
+            [ngTemplateOutlet]="content"
+            [ngTemplateOutletContext]="{ value: value }"></ng-container>
+        </ng-container>
       </ng-container>
-    </ng-container>
-  </app-carousel>
+    </app-carousel>
+  </section>
 
-  <app-dashboard-app-features></app-dashboard-app-features>
+  <section>
+    <app-dashboard-app-features></app-dashboard-app-features>
+  </section>
+
+
 </div>
 
 <ng-template #content let-value="value">
