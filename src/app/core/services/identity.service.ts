@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IIdentityState } from '@core/models/identity-state.model';
+import { ISignUpModel } from '@core/models/sign-up.model';
 import { LocalStorageKeys } from '@shared/constants/local-storage-keys';
 import { LocalStorageService } from '@shared/services/local-storage.service';
 import { BehaviorSubject, map, Observable } from 'rxjs';
@@ -22,7 +23,6 @@ export class IdentityService {
       identity
     );
     this._identity.next(identity);
-    console.log(this._identity.value);
   }
 
   public clearIdentity(): void {
@@ -30,9 +30,15 @@ export class IdentityService {
     this._identity.next(null);
   }
 
-  public logout(): void {
-    this._localStorageService.remove(LocalStorageKeys.IdentityKey);
-    this._identity.next(null);
-    console.log(this._identity.value);
+  public async logout(): Promise<void> {
+    return new Promise<void>(resolve => {
+      try {
+        this._localStorageService.remove(LocalStorageKeys.IdentityKey);
+        this._identity.next(null);
+        resolve();
+      } catch {
+        throw Error('Cannot logout. Please try again.');
+      }
+    });
   }
 }

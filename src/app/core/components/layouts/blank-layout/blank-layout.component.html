@@ -1,5 +1,5 @@
 <div class="layout">
-  <div class="layout__logger" *ngIf="(errorMessage$ | async) as message" [@toastAnimation]>
+  <div class="layout__logger" *ngIf="(errorMessage$ | async) as message" @toastAnimation>
     <app-toast
       [message]="message.message"
       [type]="message.type"

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HeaderAnimations } from '@core/components/header/animations/header.animation';
 import { HeaderActionButtonsEnum } from '@core/components/header/enums/header-action-buttons.enum';
 import { IdentityService } from '@core/services/identity.service';
+import { LoggerMessagesService } from '@shared/services/logger-messages.service';
 import { AppRoutes } from '../../../app.routes';
 
 @Component({
@@ -18,7 +19,8 @@ export class HeaderComponent {
 
   constructor(
     private readonly _router: Router,
-    private readonly _identityService: IdentityService
+    private readonly _identityService: IdentityService,
+    private readonly _loggerMessageService: LoggerMessagesService
   ) {}
 
   public setActivePanel(value: HeaderActionButtonsEnum | null): void {
@@ -38,7 +40,17 @@ export class HeaderComponent {
   }
 
   public async handleLogout(): Promise<void> {
-    this._identityService.logout();
-    this.setActivePanel(HeaderActionButtonsEnum.Profile);
+    this._identityService
+      .logout()
+      .then(() => {
+        this._loggerMessageService.successMsg('Successfully logged out.');
+        this.setActivePanel(HeaderActionButtonsEnum.Profile);
+      })
+      .catch(error =>
+        this._loggerMessageService.errorMsg(
+          error,
+          'Something went wrong. Please try again.'
+        )
+      );
   }
 }
