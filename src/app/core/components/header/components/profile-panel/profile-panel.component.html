@@ -1,0 +1,26 @@
+<div class="panel">
+  <div class="panel__info">
+    <div class="panel__info--user">
+      <ng-container *ngIf="link else initials">
+        <img [src]="link" [alt]="firstName?.slice(0,1) + lastName?.slice(0,1)" />
+      </ng-container>
+      <div class="panel__info--details">
+        <div>
+          {{ firstName }}
+        </div>
+        <div>
+          {{ lastName }}
+        </div>
+      </div>
+    </div>
+    <div class="panel__info--logout">
+      <tm-button size="small" label="logout" (action)="handleLogout()"></tm-button>
+    </div>
+  </div>
+</div>
+
+<ng-template #initials>
+  <div class="panel__info--initials">
+    {{ firstName?.slice(0,1) + lastName?.slice(0,1)}}
+  </div>
+</ng-template>

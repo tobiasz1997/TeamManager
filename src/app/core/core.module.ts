@@ -6,6 +6,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { BlankLayoutComponent } from './components/layouts/blank-layout/blank-layout.component';
 import { FullLayoutComponent } from './components/layouts/full-layout/full-layout.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderButtonIconComponent } from './components/header/components/header-button-icon/header-button-icon.component';
+import { ProfilePanelComponent } from './components/header/components/profile-panel/profile-panel.component';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { FooterComponent } from './components/footer/footer.component';
     BlankLayoutComponent,
     FullLayoutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderButtonIconComponent,
+    ProfilePanelComponent
   ],
   providers: [],
 })

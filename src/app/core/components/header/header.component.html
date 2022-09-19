@@ -7,10 +7,46 @@
           src="assets/team-manager-logo.png" />
       </div>
 
-      <div class="nav__actions">
-        <tm-button size="small" color="transparent" label="Login"></tm-button>
-        <tm-button size="small" color="primary" label="Start Free"></tm-button>
-      </div>
+      <ng-container *ngIf="isLoggedIn$ | async else authActions">
+        <div class="nav__actions">
+          <ng-container *ngTemplateOutlet="profile"></ng-container>
+        </div>
+      </ng-container>
+
     </div>
   </nav>
 </header>
+
+<ng-template #authActions>
+  <div class="nav__actions">
+    <tm-button size="small" color="transparent" label="Login" (action)="handleSignIn()"></tm-button>
+    <tm-button size="small" color="primary" label="Start Free" (action)="handleSignUp()"></tm-button>
+  </div>
+</ng-template>
+
+<ng-template #profile>
+  <div csClickOutside
+       [isActive]="(activePanel === ActiveButtonsEnum.Profile)"
+       (clickOutside)="setActivePanel(null)"
+       class="nav__action"
+  >
+    <tm-header-button-icon
+      title="Profile"
+      (action)="setActivePanel(ActiveButtonsEnum.Profile)"
+    >
+      <span icon class="material-icons-outlined nav__actions--icon">person_outline</span>
+    </tm-header-button-icon>
+
+    <div
+      *ngIf="activePanel === ActiveButtonsEnum.Profile"
+      @panelAnimation
+      class="nav__panel"
+    >
+      <tm-profile-panel
+        [firstName]="'John'"
+        [lastName]="'Smith'"
+        (logoutButtonClick$)="handleLogout()"
+      ></tm-profile-panel>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,32 @@
+<label class="input">
+  <div class="input__label">
+    {{ label }}
+    <div *ngIf="popoverMessage"
+         class="input__label--help"
+         csClickOutside
+         [isActive]="isPopoverVisible"
+         (clickOutside)="handlePopover(null, false)"
+    >
+      <span class="material-icons-round" (click)="handlePopover($event, null)">help_outline</span>
+      <div class="input__popover" *ngIf="isPopoverVisible">
+        {{ popoverMessage }}
+      </div>
+    </div>
+  </div>
+  <span class="input__input" [ngClass]="{'input--invalid': showError}">
+    <span *ngIf="icon" class="material-icons-round">{{icon}}</span>
+    <input
+      [type]="type"
+      [value]="value"
+      (input)="onChange($any($event.target).value)"
+      (blur)="onTouch()"
+      [autocomplete]="autocomplete"
+    />
+  </span>
+  <ng-container *ngFor="let error of formErrorMessages">
+    <div class="input__error" *ngIf="control?.hasError(error.type) && showError">
+      {{ errorMessage || error.message }}
+    </div>
+  </ng-container>
+
+</label>

@@ -1,0 +1,41 @@
+@import 'variables'
+
+@mixin link($color, $hover-color)
+  cursor: pointer
+  background: transparent
+  border: none
+  color: $color
+  padding: 0
+
+  &:hover
+    color: $hover-color
+
+
+.button__primary
+  @include link($button-primary-color, $button-primary-hover-color)
+
+.button__secondary
+  @include link($button-secondary-color, $button-secondary-hover-color)
+
+.button__tertiary
+  @include link($button-tertiary-color, $button-tertiary-hover-color)
+
+
+.button__small
+  font-size: $font-sm
+  line-height: 1.5
+
+
+.button__default
+  font-size: $font-default
+  line-height: 1.5
+
+
+.button__large
+  font-size: $font-lg
+  line-height: 1.5
+
+
+.button__disabled
+  opacity: 0.5
+
