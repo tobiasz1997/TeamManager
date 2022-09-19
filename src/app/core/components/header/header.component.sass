@@ -3,7 +3,7 @@
 
 .nav
   height: 3rem
-  background: $tw-background-color
+  background: $primary-background-color
   padding: 0.5rem 5rem
   box-shadow: $box-shadow-bottom
   position: relative
@@ -31,9 +31,25 @@
     > img
       height: 40px
 
+  &__action
+    height: 2.6rem
+
   &__actions
     display: flex
     align-items: center
 
     *:not(:last-child)
       padding-right: 8px
+
+    &--icon
+      display: flex
+      justify-content: center
+      align-items: center
+      font-size: 1.5rem
+
+  &__panel
+    position: absolute
+    top: 4rem
+    right: 0
+    padding: 1rem
+

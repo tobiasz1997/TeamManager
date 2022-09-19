@@ -1,0 +1,16 @@
+<div [ngClass]="{
+  'toast__info': type === loggerType.Info,
+  'toast__success' : type === loggerType.Success,
+  'toast__warn': type === loggerType.Warning,
+  'toast__error' : type === loggerType.Error
+}">
+  <div id="message">
+    {{ message }}
+  </div>
+  <div>
+    <button id="button" (click)="handleClose()">
+      <span class="material-icons-outlined">clear</span>
+    </button>
+  </div>
+</div>
+

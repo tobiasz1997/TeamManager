@@ -1,0 +1,4 @@
+<button [title]="title" class="button" (click)="handleClick()">
+  <span *ngIf="indicator > 0" class="button__indicator">{{indicator}}</span>
+  <ng-content select="[icon]"></ng-content>
+</button>

@@ -1,0 +1,65 @@
+@import 'variables'
+
+.button__primary
+  cursor: pointer
+  background: transparent
+  border: none
+  color: $primary-color
+  padding: 0
+  font-size: $font-default
+  line-height: 1.5
+  display: flex
+  justify-content: center
+  align-items: center
+
+  & > #icon
+    padding-left: 4px
+    font-size: 20px
+    transition: .5s
+
+
+  & > #label
+    padding-top: 2px
+
+
+  &:hover
+    // color: @primary-color-800;
+
+    & > #icon
+      padding-right: 4px
+      padding-left: 0
+
+
+
+
+.button__secondary
+  cursor: pointer
+  background: transparent
+  border: none
+  color: $tertiary-color
+  padding: 0
+  font-size: $font-default
+  line-height: 1.5
+  display: flex
+  justify-content: center
+  align-items: center
+
+  & > #icon
+    padding-left: 4px
+    font-size: 20px
+    transition: .5s
+
+
+  & > #label
+    padding-top: 2px
+
+
+  &:hover
+    // color: @button-secondary-hover-color;
+
+    & > #icon
+      padding-right: 4px
+      padding-left: 0
+
+
+

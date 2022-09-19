@@ -1,0 +1,50 @@
+@import 'variables'
+
+@mixin toast($lightColor, $defaultColor, $darkColor)
+  display: flex
+  justify-content: space-between
+  align-items: center
+  border-radius: $border-radius
+  box-shadow: $box-shadow-sm
+  padding: 1rem
+  width: 15rem
+  background: $lightColor
+  color: $darkColor
+
+  #message
+    flex: auto
+    margin-right: 0.5rem
+
+  #button
+    width: 2rem
+    height: 2rem
+    background: $defaultColor
+    border-radius: $border-radius
+    border: none
+    color: $black
+    cursor: pointer
+
+    &:hover
+      & > span
+        transform: scale(1.5)
+
+    & > span
+      display: flex
+      justify-content: center
+      align-items: center
+      font-size: 1rem
+      transition: transform .5s
+
+
+.toast__success
+  @include toast($success-light, $success-default, $success-dark)
+
+.toast__info
+  @include toast($info-light, $info-default, $info-dark)
+
+.toast__warn
+  @include toast($warning-light, $warning-default, $warning-dark)
+
+.toast__error
+  @include toast($error-light, $error-default, $error-dark)
+

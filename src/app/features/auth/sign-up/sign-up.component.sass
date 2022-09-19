@@ -1,0 +1,68 @@
+@import "variables"
+@import "breakpoints"
+
+.container
+  margin: 2rem
+  border-radius: $border-radius-lg
+  box-shadow: $box-shadow
+  background: $secondary-background-color
+  padding: 2rem
+  text-align: center
+  width: 400px
+
+  @include sm
+    width: auto
+
+  &__back
+    text-align: start
+    margin-bottom: 2rem
+
+  &__logo
+    margin-bottom: 2rem
+    & > img
+      width: 5rem
+
+
+  &__header
+    color: $primary-color
+    margin-bottom: 2rem
+
+
+  &__description
+    color: $tertiary-color
+    margin-bottom: 2rem
+
+
+  &__action
+    margin-top: 2rem
+    text-align: center
+
+    &--links
+      margin-top: 2rem
+      display: flex
+      justify-content: space-between
+
+      &:first-child
+        padding-right: 2rem
+
+.form
+  &__field
+    margin-bottom: 1rem
+
+    &--flex
+      display: flex
+      align-items: center
+
+    &--icon
+      font-size: 50px
+      color: $error-default
+
+    &--image
+      width: 50%
+
+      & > img
+        width: 100px
+        height: 100px
+        border-radius: $border-radius-lg
+
+
