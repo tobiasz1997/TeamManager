@@ -1,5 +1,6 @@
-@import "variables"
-@import "breakpoints"
+@import "src/styles/variables"
+@import "src/styles/breakpoints"
+@import "src/styles/mixins"
 
 .nav
   height: 3rem
@@ -42,10 +43,7 @@
       padding-right: 8px
 
     &--icon
-      display: flex
-      justify-content: center
-      align-items: center
-      font-size: 1.5rem
+      @include buttonIconSpan('small')
 
   &__panel
     position: absolute

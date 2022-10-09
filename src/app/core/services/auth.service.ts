@@ -27,6 +27,7 @@ export class AuthService {
           firstName: object.firstName,
           lastName: object.lastName,
           email: object.email,
+          avatar: object.avatar,
         });
         resolve();
       } else {

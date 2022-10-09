@@ -4,12 +4,12 @@
       <div class="nav__logo">
         <img
           alt="TeamManager Logo"
-          src="assets/team-manager-logo.png" />
+          src="../../../../../../../assets/team-manager-logo.png" />
       </div>
 
       <ng-container *ngIf="isLoggedIn$ | async else authActions">
         <div class="nav__actions">
-          <ng-container *ngTemplateOutlet="profile"></ng-container>
+          <ng-container [ngTemplateOutlet]="profile" [ngTemplateOutletContext]="{ profile: identity$ | async }"></ng-container>
         </div>
       </ng-container>
 
@@ -24,18 +24,22 @@
   </div>
 </ng-template>
 
-<ng-template #profile>
+<ng-template #profile let-profile="profile">
   <div csClickOutside
        [isActive]="(activePanel === ActiveButtonsEnum.Profile)"
        (clickOutside)="setActivePanel(null)"
        class="nav__action"
   >
-    <tm-header-button-icon
-      title="Profile"
-      (action)="setActivePanel(ActiveButtonsEnum.Profile)"
-    >
-      <span icon class="material-icons-outlined nav__actions--icon">person_outline</span>
-    </tm-header-button-icon>
+    <tm-button-icon
+      color="transparent"
+      (action)="handleNavigateToManager()">
+      <span icon class="material-icons-outlined nav__actions--icon">work_outline</span>
+    </tm-button-icon>
+
+    <tm-button-icon
+      (action)="setActivePanel(ActiveButtonsEnum.Profile)">
+        <span icon class="material-icons-outlined nav__actions--icon">person_outline</span>
+    </tm-button-icon>
 
     <div
       *ngIf="activePanel === ActiveButtonsEnum.Profile"
@@ -43,8 +47,9 @@
       class="nav__panel"
     >
       <tm-profile-panel
-        [firstName]="'John'"
-        [lastName]="'Smith'"
+        [firstName]="profile.firstName"
+        [lastName]="profile.lastName"
+        [avatar]="profile.avatar"
         (logoutButtonClick$)="handleLogout()"
       ></tm-profile-panel>
     </div>

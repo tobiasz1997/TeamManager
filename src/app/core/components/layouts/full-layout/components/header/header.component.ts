@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HeaderAnimations } from '@core/components/header/animations/header.animation';
-import { HeaderActionButtonsEnum } from '@core/components/header/enums/header-action-buttons.enum';
+import { HeaderAnimations } from '@core/components/layouts/full-layout/components/header/animations/header.animation';
+import { HeaderActionButtonsEnum } from '@core/components/layouts/full-layout/components/header/enums/header-action-buttons.enum';
 import { IdentityService } from '@core/services/identity.service';
 import { LoggerMessagesService } from '@shared/services/logger-messages.service';
-import { AppRoutes } from '../../../app.routes';
+import { AppRoutes } from '../../../../../../app.routes';
 
 @Component({
   selector: 'tm-header',
@@ -16,6 +16,7 @@ export class HeaderComponent {
   public activePanel: HeaderActionButtonsEnum = null;
   public readonly ActiveButtonsEnum = HeaderActionButtonsEnum;
   public readonly isLoggedIn$ = this._identityService.isAuthenticated$;
+  public readonly identity$ = this._identityService.identity$;
 
   constructor(
     private readonly _router: Router,
@@ -33,6 +34,10 @@ export class HeaderComponent {
 
   public async handleSignIn(): Promise<void> {
     await this._router.navigate([AppRoutes.signIn.absolutePath]);
+  }
+
+  public async handleNavigateToManager(): Promise<void> {
+    await this._router.navigate([AppRoutes.tasks.absolutePath]);
   }
 
   public async handleSignUp(): Promise<void> {

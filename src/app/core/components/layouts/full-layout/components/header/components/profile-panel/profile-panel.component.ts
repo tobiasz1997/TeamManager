@@ -6,9 +6,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./profile-panel.component.sass'],
 })
 export class ProfilePanelComponent {
-  @Input() link = '';
   @Input() firstName = '';
   @Input() lastName = '';
+  @Input() avatar: string | undefined = undefined;
   @Output() logoutButtonClick$ = new EventEmitter<void>();
 
   constructor() {}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ManagerLayoutComponent } from '@core/components/layouts/manager-layout/manager-layout.component';
 import { AppRoutes } from './app.routes';
 import { BlankLayoutComponent } from './core/components/layouts/blank-layout/blank-layout.component';
 import { FullLayoutComponent } from './core/components/layouts/full-layout/full-layout.component';
@@ -37,6 +38,12 @@ const routes: Routes = [
             m => m.SignUpModule
           ),
       },
+    ],
+  },
+  {
+    path: '',
+    component: ManagerLayoutComponent,
+    children: [
       {
         path: AppRoutes.tasks.path,
         loadChildren: () =>
