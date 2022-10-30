@@ -1,6 +1,15 @@
-<div class="screen">
-  <tm-sidebar></tm-sidebar>
-  <main class="screen__main">
-    <router-outlet></router-outlet>
+<div class='screen'>
+  <div class='screen__logger' *ngIf='(errorMessage$ | async) as message' @toastAnimation>
+    <app-toast
+      [message]='message.message'
+      [type]='message.type'
+      (closeLoggerClick$)='handleCloseLoggerMessage()'
+    ></app-toast>
+  </div>
+  <tm-sidebar [isSidebarOpen]='isSidebarOpen' (onSidebarMove)='handleSidebarOpen()'></tm-sidebar>
+  <main class='screen__main' [@openClose]='isSidebarOpen'>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
   </main>
 </div>

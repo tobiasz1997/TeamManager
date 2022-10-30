@@ -1,1 +1,84 @@
-<p>sidebar works!</p>
+<div class='header'>
+  <div class='header__content'>
+    <div class='header__logo'>
+      <img
+        alt='TeamManager Logo'
+        src='../../../../../../../assets/team-manager-logo.png' />
+    </div>
+
+    <ng-container *ngIf='!(isSM$ | async) else burger'>
+      <ng-container [ngTemplateOutlet]='profile'
+                    [ngTemplateOutletContext]='{ profile: identity$ | async }'
+      ></ng-container>
+    </ng-container>
+
+  </div>
+</div>
+<div *ngIf='!(isSM$ | async)' class='sidebar' [@openClose]='isSidebarOpen'>
+  <div class='sidebar__visibility'>
+    <button (click)='handleSidebarOpen()' class='sidebar__visibility--arrows'>
+      <span *ngIf='!isSidebarOpen' class='material-icons-outlined'>keyboard_double_arrow_right</span>
+      <span *ngIf='isSidebarOpen' class='material-icons-outlined'>keyboard_double_arrow_left</span>
+    </button>
+
+    <ng-container *ngTemplateOutlet='sidebarContent'></ng-container>
+  </div>
+</div>
+<div *ngIf='(isSM$ | async) && isMobileMenuOpen' class='mobileSidebar'>
+  <div class='mobileSidebar__header'>
+    <button (click)='handleMobileSidebar()'>
+      <span class='material-icons-outlined'>close</span>
+    </button>
+  </div>
+  <ng-container *ngTemplateOutlet='sidebarContent'></ng-container>
+</div>
+
+
+<ng-template #burger>
+  <tm-button-icon color='transparent' (click)='handleMobileSidebar()'>
+    <span icon class='material-icons-outlined nav__actions--icon'>menu</span>
+  </tm-button-icon>
+</ng-template>
+
+<ng-template #profile let-profile='profile'>
+  <div csClickOutside
+       [isActive]='(activePanel === ActiveButtonsEnum.Profile)'
+       (clickOutside)='setActivePanel(null)'
+       class='header__action'
+  >
+    <tm-button-icon
+      (action)='setActivePanel(ActiveButtonsEnum.Profile)'>
+      <span icon class='material-icons-outlined nav__actions--icon'>person_outline</span>
+    </tm-button-icon>
+
+    <div
+      *ngIf='activePanel === ActiveButtonsEnum.Profile'
+      @panelAnimation
+      class='header__panel'
+    >
+      <tm-profile-panel
+        [firstName]='profile.firstName'
+        [lastName]='profile.lastName'
+        [avatar]='profile.avatar'
+        (logoutButtonClick$)='handleLogout()'
+      ></tm-profile-panel>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #sidebarContent>
+  <div class='sidebar__content'>
+    <div class='sidebar__content--routes'>
+      <ng-container *ngFor='let value of sidebarMenuRoutes'>
+        <button
+          [ngClass]="activeUrl === value.route.absolutePath ? 'sidebar__route--active' : 'sidebar__route--default'"
+          (click)='handleRouteClick(value.route.absolutePath)'>
+          <span class='material-icons-outlined'>{{value.icon}}</span>
+          <div *ngIf='isSidebarOpen'>
+            {{value.route.title | firstLetterUppercase}}
+          </div>
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

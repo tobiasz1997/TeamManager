@@ -1,0 +1,154 @@
+@import "variables"
+@import "breakpoints"
+@import "src/styles/mixins"
+
+$header-height: 3.6rem
+
+.header
+  width: 100%
+  height: $header-height
+  position: fixed
+  top: 0
+  background: $secondary-background-color
+  border-bottom: 1px solid $gray-300
+  box-shadow: 0 5px 10px 0 $gray-300
+
+  &__content
+    padding: 0.5rem 1.5rem
+    position: relative
+    z-index: 200
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  &__logo
+    color: white
+    font-size: 1rem
+    font-weight: bold
+    height: 100%
+    display: flex
+    align-items: center
+
+    > img
+      height: 40px
+
+  &__actions
+    display: flex
+    align-items: center
+
+    *:not(:last-child)
+      padding-right: 8px
+
+    &--icon
+      @include buttonIconSpan('small')
+
+  &__panel
+    position: absolute
+    top: $header-height
+    right: 0
+    padding: 1rem
+
+.sidebar
+  position: fixed
+  top: $header-height
+  background: $secondary-background-color
+  max-width: 16rem
+  min-width: 3.5rem
+  height: calc(100vh - $header-height)
+  border-top: 1px solid $gray-300
+  border-right: 1px solid $gray-300
+  box-shadow: 5px 5px 10px 0 $gray-300
+
+  &__visibility
+    text-align: end
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+
+    &--arrows
+      background: transparent
+      border: none
+      cursor: pointer
+      display: flex
+      justify-content: flex-end
+      align-items: center
+      color: $tertiary-color
+      padding: 0.5rem 1rem
+
+  &__content
+    padding: 1rem 0
+
+    &--routes
+      display: flex
+      flex-direction: column
+
+  &__route
+    &--default
+      width: 100%
+      padding: 1rem
+      border: none
+      font-size: $font-default
+      cursor: pointer
+      background: transparent
+      color: $tertiary-color
+      font-weight: normal
+      display: flex
+      justify-content: center
+      align-items: center
+      position: relative
+      min-height: 51px
+
+      & > span
+        position: absolute
+        left: 0
+        padding: 0.25rem 1rem
+        font-size: $font-xlg
+        color: $tertiary-color
+
+      &:hover
+        background: $gray-300
+
+    &--active
+      width: 100%
+      padding: 1rem
+      border: none
+      font-size: $font-default
+      cursor: pointer
+      background: darken($gray-300, 5%)
+      color: $tertiary-color
+      font-weight: bold
+      display: flex
+      justify-content: center
+      align-items: center
+      position: relative
+      min-height: 51px
+
+      & > span
+        position: absolute
+        left: 0
+        padding: 0.25rem 1rem
+        font-size: $font-xlg
+        color: $tertiary-color
+
+.mobileSidebar
+  position: fixed
+  top: $header-height
+  background: $primary-background-color
+  width: 100%
+  height: calc(100vh - $header-height)
+  margin-top: 11px
+
+  &__header
+    display: flex
+    justify-content: flex-end
+    align-items: center
+
+    & > button
+      background: transparent
+      border: none
+      cursor: pointer
+      display: flex
+      justify-content: flex-end
+      align-items: center
+      color: $tertiary-color
+      padding: 0.5rem 1rem
