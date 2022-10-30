@@ -1,0 +1,21 @@
+@import 'variables'
+
+@mixin buttonIconSpan($type)
+  @if $type == 'small'
+    height: 100%
+    display: flex
+    align-items: center
+    font-size: $font-lg
+
+  @if $type == 'default'
+    height: 100%
+    display: flex
+    align-items: center
+    font-size: $font-xlg
+
+  @if $type == 'large'
+    height: 100%
+    display: flex
+    align-items: center
+    font-size: $font-xl
+

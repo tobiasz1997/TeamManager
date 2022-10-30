@@ -1,0 +1,28 @@
+@import "variables"
+@import "breakpoints"
+
+.screen
+  display: flex
+  min-height: 100vh
+  flex-direction: column
+  position: relative
+
+  &__logger
+    position: fixed
+    top: 3rem
+    right: 0
+    padding: 1rem
+    z-index: 200
+
+  &__main
+    display: flex
+    flex-direction: column
+    flex: 1 1 0
+    background: $primary-background-color
+    padding-top: 3.6rem
+
+    & > div
+      padding: 1rem 2rem
+
+    @include sm
+      padding-left: 0 !important

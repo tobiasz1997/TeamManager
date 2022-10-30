@@ -12,6 +12,7 @@ import { ToastComponent } from './components/toast/toast.component';
 import { InputComponent } from './components/input/input.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { ButtonIconComponent } from './components/button-icon/button-icon.component';
+import { ProfilePanelComponent } from '@shared/components/header/components/profile-panel/profile-panel.component';
 
 export function loggerFactory(): Logger {
   return new StageLoggerService();
@@ -30,6 +31,7 @@ export function loggerFactory(): Logger {
     InputComponent,
     ClickOutsideDirective,
     ButtonIconComponent,
+    ProfilePanelComponent,
   ],
   exports: [
     ButtonComponent,
@@ -41,10 +43,13 @@ export function loggerFactory(): Logger {
     InputComponent,
     ClickOutsideDirective,
     ButtonIconComponent,
+    ProfilePanelComponent,
+    FirstLetterUppercasePipe,
   ],
   providers: [
     StageLoggerService,
     { provide: Logger, useFactory: loggerFactory },
   ],
 })
-export class SharedModule {}
+export class SharedModule {
+}

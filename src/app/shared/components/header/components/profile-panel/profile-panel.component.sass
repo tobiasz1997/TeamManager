@@ -1,4 +1,4 @@
-@import 'variables'
+@import '../../../../../../styles/variables'
 
 .panel
   padding: 1rem
@@ -18,17 +18,17 @@
     &--user
       display: flex
 
+      & > img
+        margin-right: 1rem
+        width: 3rem
+        height: 3rem
+        border-radius: $border-radius
+        box-shadow: $box-shadow-md
+
     &--logout
       display: flex
       justify-content: flex-end
       align-items: center
-
-    & > img
-      margin-right: 1rem
-      width: 3rem
-      height: 3rem
-      border-radius: $border-radius
-      box-shadow: $box-shadow
 
     &--initials
       margin-right: 1rem

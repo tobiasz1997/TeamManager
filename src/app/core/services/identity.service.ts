@@ -15,7 +15,13 @@ export class IdentityService {
     return this._identity.pipe(map(x => x !== null));
   }
 
-  constructor(private readonly _localStorageService: LocalStorageService) {}
+  get identity$(): Observable<IIdentityState> {
+    return this._identity;
+  }
+
+  constructor(private readonly _localStorageService: LocalStorageService) {
+    this.checkIdentity();
+  }
 
   public setIdentity(identity: IIdentityState): void {
     this._localStorageService.set<IIdentityState>(
@@ -40,5 +46,13 @@ export class IdentityService {
         throw Error('Cannot logout. Please try again.');
       }
     });
+  }
+
+  private checkIdentity(): void {
+    const identity = this._localStorageService.get<IIdentityState>(
+      LocalStorageKeys.IdentityKey
+    );
+
+    this._identity.next(identity ?? null);
   }
 }
