@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.sass']
+  styleUrls: ['./carousel.component.sass'],
 })
 export class CarouselComponent implements AfterViewInit, OnDestroy {
   @Input() isAuto = true;
@@ -13,13 +13,12 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
   private _timeout: NodeJS.Timer | null = null;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngAfterViewInit(): void {
     if (this.isAuto) {
-      this._timeout = setInterval(() => {
-        this.rightArrowClick$.emit();
-      }, 3000)
+      this.manageTimer();
     }
   }
 
@@ -32,11 +31,22 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
   public onLeftArrowClick(): void {
     this.leftArrowClick$.emit();
+    this.manageTimer(true);
   }
 
   public onRightArrowClick(): void {
-    this.rightArrowClick$.emit()
+    this.rightArrowClick$.emit();
+    this.manageTimer(true);
   }
 
-
+  private manageTimer(shouldClear = false): void {
+    if (this.isAuto) {
+      if (shouldClear && this._timeout) {
+        clearInterval(this._timeout);
+      }
+      this._timeout = setInterval(() => {
+        this.rightArrowClick$.emit();
+      }, 3000);
+    }
+  }
 }

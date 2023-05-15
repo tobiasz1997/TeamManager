@@ -1,82 +1,66 @@
-<div class="container">
-  <div class="container__back">
-    <app-back-button color="secondary" (action)="backToPreviousPage()"></app-back-button>
+<div class='container'>
+  <div class='container__back'>
+    <app-back-button color='secondary' (action)='backToPreviousPage()'></app-back-button>
   </div>
 
-  <div class="container__logo">
-    <img src="assets/team-manager-logo.png" alt="Car Sale">
+  <div class='container__logo'>
+    <img src='assets/team-manager-logo.png' alt='Car Sale'>
   </div>
-  <h1 class="container__header">
+  <h1 class='container__header'>
     Register
   </h1>
-  <div class="container__description">
+  <div class='container__description'>
     Create account to be able to buy ours products!
   </div>
 
-  <form [formGroup]="formGroup" (ngSubmit)="handleSubmit()">
-    <div class="form__field">
+  <form [formGroup]='formGroup' (ngSubmit)='handleSubmit()'>
+    <div class='form__field'>
       <tm-input
-        label="First name"
-        formControlName="firstName"
-        icon="person"
-        autocomplete="given-name"
+        label='First name'
+        formControlName='firstName'
+        icon='person'
+        autocomplete='given-name'
       ></tm-input>
     </div>
-    <div class="form__field">
+    <div class='form__field'>
       <tm-input
-        label="Last name"
-        formControlName="lastName"
-        icon="person"
-        autocomplete="family-name"
+        label='Last name'
+        formControlName='lastName'
+        icon='person'
+        autocomplete='family-name'
       ></tm-input>
     </div>
-    <div class="form__field">
+    <div class='form__field'>
       <tm-input
-        label="Email"
-        formControlName="email"
-        type="email"
-        icon="email"
-        autocomplete="email"
+        label='Email'
+        formControlName='email'
+        type='email'
+        icon='email'
+        autocomplete='email'
       ></tm-input>
     </div>
-    <div class="form__field">
+    <div class='form__field'>
       <tm-input
-        label="Password"
-        formControlName="password"
-        type="password"
-        icon="key"
-        autocomplete="new-password"
-        [popoverMessage]="formPasswordRulesMessage"
+        label='Password'
+        formControlName='password'
+        type='password'
+        icon='key'
+        autocomplete='new-password'
+        [popoverMessage]='formPasswordRulesMessage'
       ></tm-input>
     </div>
-    <div class="form__field">
+    <div class='form__field'>
       <tm-input
-        label="Repeat Password"
-        formControlName="repeatPassword"
-        type="password"
-        icon="key"
-        autocomplete="new-password"
+        label='Repeat Password'
+        formControlName='repeatPassword'
+        type='password'
+        icon='key'
+        autocomplete='new-password'
       ></tm-input>
-    </div>
-    <div class="form__field form__field--flex">
-      <div class="form__field--input" [style.width]="imageUrl ? '50%' : '100%'">
-        <tm-input
-          label="Avatar url"
-          formControlName="avatar"
-          type="url"
-          icon="link"
-          autocomplete="photo"
-        ></tm-input>
-      </div>
-
-      <div class="form__field--image" *ngIf="imageUrl">
-        <img *ngIf="!isImageIncorrect" [src]="imageUrl" [alt]="'avatar'" (error)="handleImageError($event)"/>
-        <span *ngIf="isImageIncorrect" class="material-icons-round form__field--icon">image_not_supported</span>
-      </div>
     </div>
 
-    <div class="container__action">
-      <tm-button type="submit" label="register" size="large"></tm-button>
+    <div class='container__action'>
+      <tm-button type='submit' label='register' size='large'></tm-button>
     </div>
   </form>
 </div>

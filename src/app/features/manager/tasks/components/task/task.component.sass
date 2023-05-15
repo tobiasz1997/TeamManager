@@ -1,0 +1,78 @@
+@import "variables"
+@import "breakpoints"
+@import "mixins"
+
+.task
+  cursor: move
+  background: $white
+  display: flex
+  border: 0.01rem solid $primary-color
+  border-radius: $border-radius
+  overflow: hidden
+
+  &:hover &__actions
+    display: flex
+
+  &__actions
+    display: none
+    flex-direction: column
+
+    &--edit
+      @extend %action-button
+      background: $button-primary-color
+
+      &:hover
+        background: $button-primary-hover-color
+
+      &:focus
+        outline: none
+        background: $button-primary-hover-color
+
+    &--delete
+      @extend %action-button
+      background: $error-default
+
+      &:hover
+        background: $error-light
+
+      &:focus
+        outline: none
+        background: $error-light
+
+  &__content
+    padding: 15px 10px
+    flex: 1 1 0
+
+    &--name
+      color: $primary-color
+      font-weight: $font-weight-bold
+      @include textDots(2)
+
+    &--description
+      color: $black
+      font-size: $font-xsm
+      margin-top: 10px
+      @include textDots(3)
+
+    &--priority
+      color: $tertiary-color
+      font-size: $font-xsm
+      margin-top: 10px
+      background: $gray-200
+      display: inline-block
+      border-radius: 20px
+      padding: 5px 10px
+
+      & > span
+        font-weight: $font-weight-bold
+
+
+%action-button
+  height: 100%
+  cursor: pointer
+  border: none
+  color: $white
+  padding: 5px
+
+  & > span
+    font-size: $font-default

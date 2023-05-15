@@ -30,7 +30,7 @@
       <span class='material-icons-outlined'>close</span>
     </button>
   </div>
-  <ng-container *ngTemplateOutlet='sidebarContent'></ng-container>
+  <ng-container *ngTemplateOutlet='sidebarContentMobile'></ng-container>
 </div>
 
 
@@ -75,6 +75,23 @@
           (click)='handleRouteClick(value.route.absolutePath)'>
           <span class='material-icons-outlined'>{{value.icon}}</span>
           <div *ngIf='isSidebarOpen'>
+            {{value.route.title | firstLetterUppercase}}
+          </div>
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #sidebarContentMobile>
+  <div class='sidebar__content'>
+    <div class='sidebar__content--routes'>
+      <ng-container *ngFor='let value of sidebarMenuRoutes'>
+        <button
+          [ngClass]="activeUrl === value.route.absolutePath ? 'sidebar__route--active' : 'sidebar__route--default'"
+          (click)='handleRouteClick(value.route.absolutePath, true)'>
+          <span class='material-icons-outlined'>{{value.icon}}</span>
+          <div>
             {{value.route.title | firstLetterUppercase}}
           </div>
         </button>

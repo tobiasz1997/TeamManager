@@ -1,0 +1,15 @@
+<div class='task' cdkDrag>
+  <div class='task__content'>
+    <div class='task__content--name'>{{task.name}}</div>
+    <div class='task__content--description'>{{task.description}}</div>
+    <div class='task__content--priority'>Priority: <span>{{task.priority}}</span></div>
+  </div>
+  <div class='task__actions'>
+    <button class='task__actions--edit'>
+      <span icon class='material-icons-outlined'>edit</span>
+    </button>
+    <button class='task__actions--delete'>
+      <span icon class='material-icons-outlined'>delete</span>
+    </button>
+  </div>
+</div>

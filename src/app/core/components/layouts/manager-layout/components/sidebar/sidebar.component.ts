@@ -71,7 +71,8 @@ export class SidebarComponent implements OnInit {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
-  public async handleRouteClick(path: string): Promise<void> {
+  public async handleRouteClick(path: string, mobile = false): Promise<void> {
+    if (mobile) this.isMobileMenuOpen = !this.isMobileMenuOpen;
     await this._router.navigate([path]);
   }
 

@@ -1,3 +1,64 @@
-<p>tasks works!</p>
+<div cdkDropListGroup class='page'>
+  <div class='tasks__container'>
+    <h2>To do</h2>
+    <div
+      cdkDropList
+      [id]='tasksStatusEnum.ToDo'
+      [cdkDropListData]='todoTasks$ | async'
+      class='tasks__container--list'
+      (cdkDropListDropped)='drop($event)'>
+      <ng-container *ngFor='let item of todoTasks$ | async; let last = last;'>
+        <tm-task [task]='item'></tm-task>
+      </ng-container>
+    </div>
+  </div>
 
-<tm-button label='error' (action)='showError()'></tm-button>
+  <div class='tasks__container'>
+    <h2>In Progress</h2>
+
+    <div
+      cdkDropList
+      [id]='tasksStatusEnum.InProgress'
+      [cdkDropListData]='inProgressTasks$ | async'
+      class='tasks__container--list'
+      (cdkDropListDropped)='drop($event)'
+    >
+      <ng-container *ngFor='let item of inProgressTasks$ | async'>
+        <tm-task [task]='item'></tm-task>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class='tasks__container'>
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      [id]='tasksStatusEnum.Done'
+      [cdkDropListData]='doneTasks$ | async'
+      class='tasks__container--list'
+      (cdkDropListDropped)='drop($event)'
+    >
+      <ng-container *ngFor='let item of doneTasks$ | async'>
+        <tm-task [task]='item'></tm-task>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class='tasks__container'>
+    <h2>Rejected</h2>
+
+    <div
+      cdkDropList
+      [id]='tasksStatusEnum.Rejected'
+      [cdkDropListData]='rejectedTasks$ | async'
+      class='tasks__container--list'
+      (cdkDropListDropped)='drop($event)'
+    >
+      <ng-container *ngFor='let item of rejectedTasks$ | async'>
+        <tm-task [task]='item'></tm-task>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

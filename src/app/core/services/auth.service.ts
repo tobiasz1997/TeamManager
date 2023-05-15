@@ -11,13 +11,14 @@ import { LocalStorageService } from '@shared/services/local-storage.service';
 export class AuthService {
   constructor(
     private readonly _identityService: IdentityService,
-    private readonly _localStorageService: LocalStorageService
-  ) {}
+    private readonly _localStorageService: LocalStorageService,
+  ) {
+  }
 
   public signIn(payload: ISignInModel): Promise<void> {
     return new Promise((resolve, reject) => {
       const object = this._localStorageService.get<ISignUpModel>(
-        LocalStorageKeys.ProfileKey
+        LocalStorageKeys.ProfileKey,
       );
       if (
         object.email === payload.email &&
@@ -27,7 +28,6 @@ export class AuthService {
           firstName: object.firstName,
           lastName: object.lastName,
           email: object.email,
-          avatar: object.avatar,
         });
         resolve();
       } else {
@@ -41,7 +41,7 @@ export class AuthService {
       try {
         this._localStorageService.set<ISignUpModel>(
           LocalStorageKeys.ProfileKey,
-          payload
+          payload,
         );
         resolve();
       } catch {

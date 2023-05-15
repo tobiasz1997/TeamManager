@@ -1,10 +1,8 @@
-<div class="panel">
-  <div class="panel__info">
-    <div class="panel__info--user">
-      <ng-container *ngIf="avatar else initials">
-        <img [src]="avatar" [alt]="firstName?.slice(0,1) + lastName?.slice(0,1)" />
-      </ng-container>
-      <div class="panel__info--details">
+<div class='panel'>
+  <div class='panel__info'>
+    <div class='panel__info--user'>
+      <ng-container *ngTemplateOutlet='initials'></ng-container>
+      <div class='panel__info--details'>
         <div>
           {{ firstName }}
         </div>
@@ -13,14 +11,14 @@
         </div>
       </div>
     </div>
-    <div class="panel__info--logout">
-      <tm-button size="small" label="logout" (action)="handleLogout()"></tm-button>
+    <div class='panel__info--logout'>
+      <tm-button size='small' label='logout' (action)='handleLogout()'></tm-button>
     </div>
   </div>
 </div>
 
 <ng-template #initials>
-  <div class="panel__info--initials">
-    {{ firstName?.slice(0,1) + lastName?.slice(0,1)}}
+  <div class='panel__info--initials'>
+    {{ firstName?.slice(0, 1) + lastName?.slice(0, 1)}}
   </div>
 </ng-template>

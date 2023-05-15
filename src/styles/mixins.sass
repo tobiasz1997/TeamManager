@@ -19,3 +19,21 @@
     align-items: center
     font-size: $font-xl
 
+@mixin textDots($lines)
+  overflow: hidden
+  display: -webkit-box
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: $lines
+  white-space: pre-wrap
+
+@mixin scrollbarStyles($shadow: true)
+  scroll-behavior: smooth
+  &::-webkit-scrollbar
+    width: 0.75rem
+    padding: 0 20px
+  &::-webkit-scrollbar-track
+    @if $shadow
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3)
+  &::-webkit-scrollbar-thumb
+    background: $primary-color
+    border-radius: $border-radius
