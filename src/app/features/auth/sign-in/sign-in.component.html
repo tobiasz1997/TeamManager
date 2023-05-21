@@ -1,44 +1,43 @@
-<div class="container">
-  <div class="container__back">
-    <app-back-button color="secondary" (click)="backToPreviousPage()"></app-back-button>
+<div class='container'>
+  <div class='container__back'>
+    <app-back-button color='secondary' (click)='backToPreviousPage()'></app-back-button>
   </div>
-  <div class="container__logo">
-    <img src="assets/team-manager-logo.png" alt="Car Sale">
+  <div class='container__logo'>
+    <img src='assets/team-manager-logo.png' alt='Car Sale'>
   </div>
-  <h1 class="container__header">
+  <h1 class='container__header'>
     Login
   </h1>
-  <div class="container__description">
+  <div class='container__description'>
     Login to our website!
   </div>
 
-  <form [formGroup]="formGroup" (ngSubmit)="handleSubmit()">
-
-    <div class="form__field">
+  <form [formGroup]='formGroup' (ngSubmit)='handleSubmit()'>
+    <div class='form__field'>
       <tm-input
-        label="Email"
-        formControlName="email"
-        type="email"
-        icon="email"
-        autocomplete="email"
+        label='Email'
+        formControlName='email'
+        type='email'
+        icon='email'
+        autocomplete='email'
       ></tm-input>
     </div>
-    <div class="form__field">
+    <div class='form__field'>
       <tm-input
-        label="Password"
-        formControlName="password"
-        type="password"
-        icon="key"
-        autocomplete="current-password"
+        label='Password'
+        formControlName='password'
+        type='password'
+        icon='key'
+        autocomplete='current-password'
       ></tm-input>
     </div>
 
-    <div class="container__action">
-      <tm-button type="submit" label="login" size="large"></tm-button>
+    <div class='container__action'>
+      <tm-button type='submit' label='login' size='large'></tm-button>
 
-      <div class="container__action--links">
-        <app-link size="small" color="tertiary" label="create account" (action)="handleCreateAccount()"></app-link>
-        <app-link size="small" color="tertiary" label="forgot password?" (action)="handleForgotPassword()"></app-link>
+      <div class='container__action--links'>
+        <app-link size='small' color='tertiary' label='create account' (action)='handleCreateAccount()'></app-link>
+        <app-link size='small' color='tertiary' label='forgot password?' (action)='handleForgotPassword()'></app-link>
       </div>
     </div>
   </form>

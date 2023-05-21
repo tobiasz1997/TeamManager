@@ -1,0 +1,30 @@
+@import "variables"
+@import "mixins"
+@import "breakpoints"
+
+.container
+  width: 400px
+  position: relative
+
+  @include sm
+    width: 100%
+
+  &__question
+    font-size: $font-lg
+    font-weight: $font-weight-bold
+    margin: 0
+    padding: 60px 0 30px 0
+    text-align: center
+
+  &__button
+    position: absolute
+    top: 0
+    right: 0
+
+    &--icon
+      @include buttonIconSpan('small')
+      width: 20px
+
+  &__actions
+    display: flex
+    justify-content: space-between

@@ -1,0 +1,20 @@
+<label class='textarea'>
+  <div class='textarea__label'>
+    {{ label }}
+  </div>
+  <span class='textarea__textarea' [ngClass]="{'textarea--invalid': showError}">
+    <textarea
+      [value]='value'
+      (input)='onChange($any($event.target).value)'
+      (blur)='onTouch()'
+      [rows]='rows'
+    ></textarea>
+  </span>
+  <ng-container *ngFor='let error of formErrorMessages'>
+    <div class='textarea__error' *ngIf='control?.hasError(error.type) && showError'>
+      {{ errorMessage || error.message }}
+    </div>
+  </ng-container>
+
+</label>
+

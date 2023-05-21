@@ -33,8 +33,15 @@ export class TasksComponent implements OnInit {
     );
   }
 
-  handleClick(i: number) {
-    console.log(i);
+  public handleAddTask(type: TaskStatusEnum): void {
+    this._tasksService.showAddTaskModal(type);
   }
 
+  public handleEditTask(task: ITaskModel): void {
+    this._tasksService.showEditTaskModal(task);
+  }
+
+  public handleDeleteTask(task: ITaskModel): void {
+    this._tasksService.showDeleteTaskModal(task);
+  }
 }

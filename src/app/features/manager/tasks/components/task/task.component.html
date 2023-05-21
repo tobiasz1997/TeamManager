@@ -5,10 +5,10 @@
     <div class='task__content--priority'>Priority: <span>{{task.priority}}</span></div>
   </div>
   <div class='task__actions'>
-    <button class='task__actions--edit'>
+    <button class='task__actions--edit' (click)='onEditClick()'>
       <span icon class='material-icons-outlined'>edit</span>
     </button>
-    <button class='task__actions--delete'>
+    <button class='task__actions--delete' (click)='onDeleteClick()'>
       <span icon class='material-icons-outlined'>delete</span>
     </button>
   </div>

@@ -1,6 +1,10 @@
 <div cdkDropListGroup class='page'>
   <div class='tasks__container'>
-    <h2>To do</h2>
+    <tm-tasks-list-header
+      title='Todo'
+      (onAdd)='handleAddTask(tasksStatusEnum.ToDo)'
+    ></tm-tasks-list-header>
+
     <div
       cdkDropList
       [id]='tasksStatusEnum.ToDo'
@@ -8,13 +12,20 @@
       class='tasks__container--list'
       (cdkDropListDropped)='drop($event)'>
       <ng-container *ngFor='let item of todoTasks$ | async; let last = last;'>
-        <tm-task [task]='item'></tm-task>
+        <tm-task
+          [task]='item'
+          (onEdit)='handleEditTask(item)'
+          (onDelete)='handleDeleteTask(item)'
+        ></tm-task>
       </ng-container>
     </div>
   </div>
 
   <div class='tasks__container'>
-    <h2>In Progress</h2>
+    <tm-tasks-list-header
+      title='In Progress'
+      (onAdd)='handleAddTask(tasksStatusEnum.InProgress)'
+    ></tm-tasks-list-header>
 
     <div
       cdkDropList
@@ -24,13 +35,20 @@
       (cdkDropListDropped)='drop($event)'
     >
       <ng-container *ngFor='let item of inProgressTasks$ | async'>
-        <tm-task [task]='item'></tm-task>
+        <tm-task
+          [task]='item'
+          (onEdit)='handleEditTask(item)'
+          (onDelete)='handleDeleteTask(item)'
+        ></tm-task>
       </ng-container>
     </div>
   </div>
 
   <div class='tasks__container'>
-    <h2>Done</h2>
+    <tm-tasks-list-header
+      title='Done'
+      (onAdd)='handleAddTask(tasksStatusEnum.Done)'
+    ></tm-tasks-list-header>
 
     <div
       cdkDropList
@@ -40,13 +58,20 @@
       (cdkDropListDropped)='drop($event)'
     >
       <ng-container *ngFor='let item of doneTasks$ | async'>
-        <tm-task [task]='item'></tm-task>
+        <tm-task
+          [task]='item'
+          (onEdit)='handleEditTask(item)'
+          (onDelete)='handleDeleteTask(item)'
+        ></tm-task>
       </ng-container>
     </div>
   </div>
 
   <div class='tasks__container'>
-    <h2>Rejected</h2>
+    <tm-tasks-list-header
+      title='Rejected'
+      (onAdd)='handleAddTask(tasksStatusEnum.Rejected)'
+    ></tm-tasks-list-header>
 
     <div
       cdkDropList
@@ -56,7 +81,11 @@
       (cdkDropListDropped)='drop($event)'
     >
       <ng-container *ngFor='let item of rejectedTasks$ | async'>
-        <tm-task [task]='item'></tm-task>
+        <tm-task
+          [task]='item'
+          (onEdit)='handleEditTask(item)'
+          (onDelete)='handleDeleteTask(item)'
+        ></tm-task>
       </ng-container>
     </div>
   </div>

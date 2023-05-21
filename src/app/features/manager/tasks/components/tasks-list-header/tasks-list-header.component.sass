@@ -1,0 +1,21 @@
+@import "variables"
+@import "mixins"
+
+.container
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin: 20px 0
+  overflow: hidden
+
+  & h3
+    color: $tertiary-color
+    font-weight: $font-weight-bold
+    margin: 0
+
+  &__button
+    display: flex
+
+    &--icon
+      @include buttonIconSpan('small')
+      width: 20px

@@ -13,6 +13,9 @@ import { InputComponent } from './components/input/input.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { ButtonIconComponent } from './components/button-icon/button-icon.component';
 import { ProfilePanelComponent } from '@shared/components/header/components/profile-panel/profile-panel.component';
+import { TextareaComponent } from './components/textarea/textarea.component';
+import { SelectComponent } from './components/select/select.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 export function loggerFactory(): Logger {
   return new StageLoggerService();
@@ -32,6 +35,9 @@ export function loggerFactory(): Logger {
     ClickOutsideDirective,
     ButtonIconComponent,
     ProfilePanelComponent,
+    TextareaComponent,
+    SelectComponent,
+    ConfirmModalComponent,
   ],
   exports: [
     ButtonComponent,
@@ -45,6 +51,7 @@ export function loggerFactory(): Logger {
     ButtonIconComponent,
     ProfilePanelComponent,
     FirstLetterUppercasePipe,
+    TextareaComponent,
   ],
   providers: [
     StageLoggerService,

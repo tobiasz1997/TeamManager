@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ITaskModel } from '@core/models/task.model';
 
 @Component({
@@ -8,8 +8,17 @@ import { ITaskModel } from '@core/models/task.model';
 })
 export class TaskComponent {
   @Input() task: ITaskModel;
+  @Output() onEdit = new EventEmitter<void>();
+  @Output() onDelete = new EventEmitter<void>();
 
   constructor() {
   }
 
+  public onEditClick(): void {
+    this.onEdit.next();
+  }
+
+  public onDeleteClick(): void {
+    this.onDelete.next();
+  }
 }

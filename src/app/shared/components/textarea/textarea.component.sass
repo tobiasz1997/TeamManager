@@ -1,0 +1,47 @@
+@import 'variables'
+
+.textarea
+  display: flex
+  align-items: flex-start
+  flex-direction: column
+
+  &__label
+    font-size: $font-lg
+    font-weight: bold
+    color: $tertiary-color
+    margin-bottom: 0.5rem
+
+  &__textarea
+    border-radius: $border-radius-sm
+    border: 1px solid $tertiary-color
+    background: $primary-background-color
+    display: flex
+    align-items: center
+    overflow: auto
+    width: 100%
+
+    &:focus-within
+      box-shadow: $box-shadow-md-hover
+
+    & > textarea
+      border: none
+      min-height: 1.5rem
+      font-size: 1rem
+      padding: 0.25rem 0.5rem
+      color: $tertiary-color
+      background: $primary-background-color
+      width: 100%
+      height: auto
+      max-height: 300px
+
+      &:focus
+        outline: none
+        background: $primary-background-color
+
+  &__error
+    font-size: 1rem
+    font-weight: bold
+    color: $error-default
+
+  &--invalid
+    border-color: $error-default

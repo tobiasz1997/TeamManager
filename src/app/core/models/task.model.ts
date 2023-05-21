@@ -7,6 +7,12 @@ export interface ITaskModel {
   createdAt: Date;
 }
 
+export interface IManageTaskModel {
+  name: string;
+  description?: string;
+  priority: number;
+}
+
 export enum TaskStatusEnum {
   ToDo = 'todo',
   InProgress = 'inProgress',

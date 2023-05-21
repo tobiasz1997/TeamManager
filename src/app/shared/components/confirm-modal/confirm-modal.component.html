@@ -1,0 +1,16 @@
+<div class='container'>
+  <div class='container__button'>
+    <tm-button-icon
+      size='small'
+      (action)='onClose()'>
+      <span icon class='material-icons-outlined container__button--icon'>close</span>
+    </tm-button-icon>
+  </div>
+
+  <p class='container__question'>{{ data.question}}</p>
+
+  <div class='container__actions'>
+    <tm-button color='transparent' (action)='onClose()' label='Close'></tm-button>
+    <tm-button (action)='onConfirm()' [label]='data.confirmButtonText'></tm-button>
+  </div>
+</div>
