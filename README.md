@@ -1,4 +1,6 @@
-![TeamManager Logo](/src/assets/team-manager-logo.png)
+<p align="center">
+    <img width="200" src="/src/assets/team-manager-logo.png" alt="TeamManager Logo">
+</p>
 
 # TeamManager Angular App
 
