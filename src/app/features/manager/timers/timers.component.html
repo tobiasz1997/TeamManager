@@ -1,0 +1,11 @@
+<div class='page'>
+  <h2 class='page__title'>Timers</h2>
+
+  <section>
+    <ng-container *ngFor='let timer of timers$ | async'>
+      <div class='page__timer'>
+        <tm-timer [timer]='timer'></tm-timer>
+      </div>
+    </ng-container>
+  </section>
+</div>

@@ -36,7 +36,7 @@ export class SidebarComponent implements OnInit {
   public readonly sidebarMenuRoutes: Array<{ route: IRoute, icon: string }> = [
     { route: AppRoutes.home, icon: 'home' },
     { route: AppRoutes.tasks, icon: 'task' },
-    { route: AppRoutes.bundy, icon: 'access_time' },
+    { route: AppRoutes.timers, icon: 'access_time' },
     { route: AppRoutes.profile, icon: 'account_circle' },
   ];
 
