@@ -1,0 +1,14 @@
+<div class='page'>
+  <tm-projects-header (onAdd)='handleAddProject()'></tm-projects-header>
+  <section>
+    <ng-container *ngFor='let project of projects$ | async'>
+      <div class='page__project'>
+        <tm-project
+          (onDelete)='handleDeleteProject(project)'
+          (onEdit)='handleEditProject(project)'
+          [project]='project'
+        ></tm-project>
+      </div>
+    </ng-container>
+  </section>
+</div>

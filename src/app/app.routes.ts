@@ -31,4 +31,9 @@ export const AppRoutes = {
     path: 'profile',
     absolutePath: '/profile',
   } as IRoute,
+  projects: {
+    title: 'projects',
+    path: 'projects',
+    absolutePath: '/timers/projects',
+  } as IRoute,
 };

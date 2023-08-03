@@ -1,0 +1,49 @@
+@import "variables"
+@import "mixins"
+
+$item-padding: 0.75rem
+
+.container
+  display: flex
+  align-items: stretch
+  padding: 1rem
+  font-size: $font-lg
+  color: $tertiary-color
+  border-radius: $border-radius
+  border-width: 2px
+  border-style: solid
+
+  &__label
+    flex-grow: 1
+
+  & > *:not(:last-child)
+    padding-right: $item-padding
+
+  & > *:not(:first-child)
+    padding-left: $item-padding
+
+    &:before
+      content: ""
+      position: absolute
+      left: 0
+      top: 0
+      height: 100%
+      display: block
+      width: 1px
+      background-color: $tertiary-color
+
+  & > *
+    display: flex
+    align-items: center
+    position: relative
+
+  &__actions
+    flex-shrink: 0
+
+    & > * + *
+      padding-left: $item-padding
+
+  &__button
+    &--icon
+      @include buttonIconSpan('small')
+      width: 20px

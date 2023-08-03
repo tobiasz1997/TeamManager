@@ -39,7 +39,6 @@ export class ManageTaskComponent {
 
   private updateForm(data: IManageTaskModel): void {
     this.formGroup.patchValue({ ...data, description: data.description ?? '' });
-
   }
 
   private buildForm(): void {

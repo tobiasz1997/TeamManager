@@ -16,13 +16,14 @@ import { ProfilePanelComponent } from '@shared/components/header/components/prof
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { SelectComponent } from './components/select/select.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export function loggerFactory(): Logger {
   return new StageLoggerService();
 }
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   declarations: [
     ButtonComponent,
     FirstLetterUppercasePipe,
@@ -52,6 +53,7 @@ export function loggerFactory(): Logger {
     ProfilePanelComponent,
     FirstLetterUppercasePipe,
     TextareaComponent,
+    SelectComponent,
   ],
   providers: [
     StageLoggerService,

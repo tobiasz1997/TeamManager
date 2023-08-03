@@ -11,7 +11,7 @@
       [cdkDropListData]='todoTasks$ | async'
       class='tasks__container--list'
       (cdkDropListDropped)='drop($event)'>
-      <ng-container *ngFor='let item of todoTasks$ | async; let last = last;'>
+      <ng-container *ngFor='let item of todoTasks$ | async;'>
         <tm-task
           [task]='item'
           (onEdit)='handleEditTask(item)'

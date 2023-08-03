@@ -1,30 +1,52 @@
-<label class="input">
-  <div class="input__label">
+<label class='input'>
+  <div class='input__label'>
     {{ label }}
-    <div *ngIf="popoverMessage"
-         class="input__label--help"
+    <div (clickOutside)='handlePopover(null, false)'
+         *ngIf='popoverMessage'
          csClickOutside
-         [isActive]="isPopoverVisible"
-         (clickOutside)="handlePopover(null, false)"
+         [isActive]='isPopoverVisible'
+         class='input__label--help'
     >
-      <span class="material-icons-round" (click)="handlePopover($event, null)">help_outline</span>
-      <div class="input__popover" *ngIf="isPopoverVisible">
+      <span (click)='handlePopover($event, null)' class='material-icons-round'>help_outline</span>
+      <div *ngIf='isPopoverVisible' class='input__popover'>
         {{ popoverMessage }}
       </div>
     </div>
   </div>
-  <span class="input__input" [ngClass]="{'input--invalid': showError}">
-    <span *ngIf="icon" class="material-icons-round">{{icon}}</span>
-    <input
-      [type]="type"
-      [value]="value"
-      (input)="onChange($any($event.target).value)"
-      (blur)="onTouch()"
-      [autocomplete]="autocomplete"
-    />
+  <span [ngClass]="{'input--invalid': showError}" class='input__input'>
+    <span *ngIf='icon' class='material-icons-round'>{{icon}}</span>
+    <ng-container [ngSwitch]='type'>
+      <ng-container *ngSwitchCase="'number'">
+        <input
+          (blur)='onTouch()'
+          (input)='onChange($any($event.target).value)'
+          [autocomplete]='autocomplete'
+          [type]='type'
+          [valueAsNumber]='value'
+        />
+      </ng-container>
+      <ng-container *ngSwitchCase="'date'">
+        <input
+          (blur)='onTouch()'
+          (input)='onChange($any($event.target).value)'
+          [autocomplete]='autocomplete'
+          [type]='type'
+          [valueAsDate]='value'
+        />
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        <input
+          (blur)='onTouch()'
+          (input)='onChange($any($event.target).value)'
+          [autocomplete]='autocomplete'
+          [type]='type'
+          [value]='value'
+        />
+      </ng-container>
+    </ng-container>
   </span>
-  <ng-container *ngFor="let error of formErrorMessages">
-    <div class="input__error" *ngIf="control?.hasError(error.type) && showError">
+  <ng-container *ngFor='let error of formErrorMessages'>
+    <div *ngIf='control?.hasError(error.type) && showError' class='input__error'>
       {{ errorMessage || error.message }}
     </div>
   </ng-container>

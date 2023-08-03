@@ -1,10 +1,13 @@
 <div class='page'>
-  <h2 class='page__title'>Timers</h2>
-
+  <tm-timers-header (onAdd)='handleAddTimer()'></tm-timers-header>
   <section>
     <ng-container *ngFor='let timer of timers$ | async'>
       <div class='page__timer'>
-        <tm-timer [timer]='timer'></tm-timer>
+        <tm-timer
+          (onDelete)='handleDeleteTimer(timer)'
+          (onEdit)='handleEditTimer(timer)'
+          [timer]='timer'
+        ></tm-timer>
       </div>
     </ng-container>
   </section>

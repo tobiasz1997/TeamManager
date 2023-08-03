@@ -80,7 +80,6 @@ export class TasksService {
   private createConfirmModal(data: IConfirmModal): MatDialogRef<ConfirmModalComponent> {
     return this._matDialog.open(ConfirmModalComponent, {
       data,
-      
     });
   }
 }

@@ -1,0 +1,74 @@
+@import 'variables'
+
+.select
+  display: flex
+  align-items: flex-start
+  flex-direction: column
+
+  &__label
+    font-size: $font-lg
+    font-weight: bold
+    color: $tertiary-color
+    margin-bottom: 0.5rem
+    display: flex
+
+    &--help
+      display: flex
+      justify-content: center
+      align-items: center
+      position: relative
+
+      & > span
+        font-size: 1.25rem
+        margin-left: 5px
+
+  &__select
+    border-radius: $border-radius-sm
+    border: 1px solid $tertiary-color
+    background: $primary-background-color
+    display: flex
+    align-items: center
+    overflow: auto
+    width: 100%
+    height: 32px
+
+    &:focus-within
+      box-shadow: $box-shadow-md-hover
+
+    & > select
+      border: none
+      font-size: 1rem
+      padding: 0.25rem 0.5rem
+      color: $tertiary-color
+      background: $primary-background-color
+      width: 100%
+
+      &:focus
+        outline: none
+        background: $primary-background-color
+
+    & > span
+      padding: 0 0 0 0.5rem
+      color: $tertiary-color
+
+  &__error
+    font-size: 1rem
+    font-weight: bold
+    color: $error-default
+
+  &--invalid
+    border-color: $error-default
+
+  &__popover
+    background: $primary-background-color
+    padding: 0.5rem
+    font-size: $font-xsm
+    color: $black
+    border-radius: $border-radius
+    box-shadow: $box-shadow
+    position: absolute
+    bottom: 24px
+    left: 24px
+    min-width: 120px
+
+

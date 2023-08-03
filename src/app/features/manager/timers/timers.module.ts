@@ -6,10 +6,14 @@ import { TimerComponent } from './components/timer/timer.component';
 import { TimersService } from '@features/manager/timers/timers.service';
 import { CommonModule } from '@angular/common';
 import { TimerStylesColorDirective } from '@features/manager/timers/components/timer/timer-styles-color.directive';
+import { TimersHeaderComponent } from './components/timers-header/timers-header.component';
+import { ManageTimerComponent } from './components/manage-timer/manage-timer.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [TimersRoutingModule, SharedModule, CommonModule],
-  declarations: [TimersComponent, TimerComponent, TimerStylesColorDirective],
+  imports: [TimersRoutingModule, SharedModule, MatDialogModule, CommonModule, ReactiveFormsModule],
+  declarations: [TimersComponent, TimerComponent, TimerStylesColorDirective, TimersHeaderComponent, ManageTimerComponent],
   providers: [TimersService],
 })
 export class TimersModule {

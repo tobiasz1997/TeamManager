@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITimerModel } from '@core/models/timer.model';
+import { IProjectModel } from '@core/models/project.model';
 
 @Component({
-  selector: 'tm-timer',
-  templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.sass'],
+  selector: 'tm-project',
+  templateUrl: './project.component.html',
+  styleUrls: ['./project.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimerComponent {
-  @Input() timer: ITimerModel;
+export class ProjectComponent {
+  @Input() project: IProjectModel;
   @Output() onEdit = new EventEmitter<void>();
   @Output() onDelete = new EventEmitter<void>();
 
