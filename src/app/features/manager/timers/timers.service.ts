@@ -5,8 +5,8 @@ import { LoggerMessagesService } from '@shared/services/logger-messages.service'
 import { ManageTimerComponent } from '@features/manager/timers/components/manage-timer/manage-timer.component';
 import { IManageTimerModel, ITimerModel } from '@core/models/timer.model';
 import { IManageTimer } from '@features/manager/timers/components/manage-timer/manage-timer.interface';
-import { ConfirmModalComponent, IConfirmModal } from '@shared/components/confirm-modal/confirm-modal.component';
 import './../../../shared/prototypes/date.prototype';
+import { Confirm } from '@shared/decorators/confirmation.decorator';
 
 @Injectable()
 export class TimersService {
@@ -46,18 +46,13 @@ export class TimersService {
     });
   }
 
-  public showDeleteTimerModal(timer: ITimerModel): void {
-    const dialogRef = this.createConfirmModal({
-      question: 'Are you sure you want to delete this timer?',
-      confirmButtonText: 'Delete',
-    });
-
-    dialogRef.afterClosed().subscribe((result: boolean | undefined) => {
-      if (result) {
-        this._timerService.deleteTimer(timer.id);
-        this._loggerMessageService.successMsg('Successfully deleted project.');
-      }
-    });
+  @Confirm({
+    question: 'Are you sure you want to delete this timer?',
+    confirmButtonText: 'Delete',
+  })
+  public deleteTimer(timer: ITimerModel) {
+    this._timerService.deleteTimer(timer.id);
+    this._loggerMessageService.successMsg('Successfully deleted project.');
   }
 
   private createManageTimerModal(isEditTask: boolean, timer?: ITimerModel): MatDialogRef<ManageTimerComponent> {
@@ -69,12 +64,6 @@ export class TimersService {
           projectId: timer.project?.id,
         } : undefined,
       } as IManageTimer,
-    });
-  }
-
-  private createConfirmModal(data: IConfirmModal): MatDialogRef<ConfirmModalComponent> {
-    return this._matDialog.open(ConfirmModalComponent, {
-      data,
     });
   }
 }

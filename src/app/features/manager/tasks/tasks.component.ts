@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoggerMessagesService } from '@shared/services/logger-messages.service';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TasksService } from '@features/manager/tasks/tasks.service';
@@ -9,7 +9,7 @@ import { ITaskModel, TaskStatusEnum } from '@core/models/task.model';
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.sass'],
 })
-export class TasksComponent implements OnInit {
+export class TasksComponent {
   public todoTasks$ = this._tasksService.todoTasks$;
   public inProgressTasks$ = this._tasksService.inProgressTasks$;
   public doneTasks$ = this._tasksService.doneTasks$;
@@ -22,8 +22,6 @@ export class TasksComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
-  }
 
   public drop(event: CdkDragDrop<Array<ITaskModel>>): void {
     this._tasksService.handleDroppedTask(
@@ -42,6 +40,6 @@ export class TasksComponent implements OnInit {
   }
 
   public handleDeleteTask(task: ITaskModel): void {
-    this._tasksService.showDeleteTaskModal(task);
+    this._tasksService.deleteTask(task);
   }
 }

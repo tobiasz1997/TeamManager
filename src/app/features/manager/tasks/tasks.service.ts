@@ -5,7 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ManageTaskComponent } from '@features/manager/tasks/components/manage-task/manage-task.component';
 import { IManageTask } from '@features/manager/tasks/components/manage-task/manage-task.interface';
 import { LoggerMessagesService } from '@shared/services/logger-messages.service';
-import { ConfirmModalComponent, IConfirmModal } from '@shared/components/confirm-modal/confirm-modal.component';
+import { Confirm } from '@shared/decorators/confirmation.decorator';
 
 @Injectable()
 export class TasksService {
@@ -56,30 +56,18 @@ export class TasksService {
     });
   }
 
-  public showDeleteTaskModal(task: ITaskModel) {
-    const dialogRef = this.createConfirmModal({
-      question: 'Are you sure you want to delete this task?',
-      confirmButtonText: 'Delete',
-    });
-
-    dialogRef.afterClosed().subscribe((result: boolean | undefined) => {
-      if (result) {
-        this._taskService.deleteTask(task);
-        this._loggerMessageService.successMsg('Successfully deleted task.');
-      }
-    });
-
+  @Confirm({
+    question: 'Are you sure you want to delete this task?',
+    confirmButtonText: 'Delete',
+  })
+  public deleteTask(task: ITaskModel) {
+    this._taskService.deleteTask(task);
+    this._loggerMessageService.successMsg('Successfully deleted task.');
   }
 
   private createManageTaskModal(isEditTask: boolean, taskStatus: TaskStatusEnum, task?: IManageTaskModel): MatDialogRef<ManageTaskComponent> {
     return this._matDialog.open(ManageTaskComponent, {
       data: { isEdit: isEditTask, type: taskStatus, task: task } as IManageTask,
-    });
-  }
-
-  private createConfirmModal(data: IConfirmModal): MatDialogRef<ConfirmModalComponent> {
-    return this._matDialog.open(ConfirmModalComponent, {
-      data,
     });
   }
 }

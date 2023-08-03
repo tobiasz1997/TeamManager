@@ -24,7 +24,7 @@ export class TimersComponent {
   }
 
   public handleDeleteTimer(timer: ITimerModel): void {
-    this._timersService.showDeleteTimerModal(timer);
+    this._timersService.deleteTimer(timer);
   }
 
 }

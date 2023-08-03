@@ -24,7 +24,7 @@ export class ProjectsComponent {
   }
 
   public handleDeleteProject(project: IProjectModel): void {
-    this._projectsService.showDeleteProjectModal(project);
+    this._projectsService.deleteProject(project);
   }
 
 }
