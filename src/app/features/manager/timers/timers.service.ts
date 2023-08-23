@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { TimerService } from '@core/services/timer.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoggerMessagesService } from '@shared/services/logger-messages.service';
@@ -7,16 +7,62 @@ import { IManageTimerModel, ITimerModel } from '@core/models/timer.model';
 import { IManageTimer } from '@features/manager/timers/components/manage-timer/manage-timer.interface';
 import './../../../shared/prototypes/date.prototype';
 import { Confirm } from '@shared/decorators/confirmation.decorator';
+import { IFilterItem } from '@shared/components/filter/filter.component';
+import { ProjectService } from '@core/services/project.service';
+import { BehaviorSubject, map, Subject } from 'rxjs';
+import { IOption } from '@shared/interfaces/option.interface';
+import { takeUntil } from 'rxjs/operators';
 
 @Injectable()
-export class TimersService {
+export class TimersService implements OnDestroy {
   public timers$ = this._timerService.timers$;
+  private _filterItems$ = new BehaviorSubject<Array<IFilterItem>>(null);
+  private _destroy$ = new Subject<void>();
+
+  get filterItems$() {
+    return this._filterItems$;
+  }
 
   constructor(
     private readonly _timerService: TimerService,
+    private readonly _projectService: ProjectService,
     private readonly _matDialog: MatDialog,
     private readonly _loggerMessageService: LoggerMessagesService,
   ) {
+    this._projectService.projects$
+      .pipe(
+        takeUntil(this._destroy$),
+        map(data => data.map(x => ({
+          label: x.label,
+          value: x.id,
+        } as IOption<string>))),
+      )
+      .subscribe(result => {
+        this._filterItems$.next([
+          {
+            name: 'startDate',
+            placeholder: 'Start Date',
+            type: 'date',
+          },
+          {
+            name: 'endDate',
+            placeholder: 'End Date',
+            type: 'date',
+          },
+          {
+            name: 'project',
+            placeholder: 'Project',
+            type: 'select',
+            options: result,
+          },
+        ]);
+      });
+  }
+
+  ngOnDestroy() {
+    console.log('destroy');
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
   public showAddTimerModal(): void {

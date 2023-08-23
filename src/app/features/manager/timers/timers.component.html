@@ -1,5 +1,8 @@
 <div class='page'>
   <tm-timers-header (onAdd)='handleAddTimer()'></tm-timers-header>
+  <section class='page__filter'>
+    <tm-filter [data]='filterItems$ | async'></tm-filter>
+  </section>
   <section>
     <ng-container *ngFor='let timer of timers$ | async'>
       <div class='page__timer'>

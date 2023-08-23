@@ -9,6 +9,7 @@ import { ITimerModel } from '@core/models/timer.model';
 })
 export class TimersComponent {
   public timers$ = this._timersService.timers$;
+  public filterItems$ = this._timersService.filterItems$;
 
   constructor(
     private readonly _timersService: TimersService,
