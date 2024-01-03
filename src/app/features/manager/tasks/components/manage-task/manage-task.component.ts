@@ -1,9 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IManageTask } from '@features/manager/tasks/components/manage-task/manage-task.interface';
+import { IManageTask, IManageTaskModel } from '@features/manager/tasks/components/manage-task/manage-task.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ControlsOf } from '@shared/components/types/controls-of.type';
-import { IManageTaskModel } from '@core/models/task.model';
 
 @Component({
   selector: 'tm-manage-task',
@@ -34,7 +33,7 @@ export class ManageTaskComponent {
     if (this.formGroup.invalid) {
       return;
     }
-    this.dialogRef.close(this.formGroup.value);
+    this.data.command(this.formGroup.value);
   }
 
   private updateForm(data: IManageTaskModel): void {

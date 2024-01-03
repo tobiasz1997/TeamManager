@@ -21,13 +21,16 @@ import { FilterComponent } from './components/filter/filter.component';
 import { FilterSelectComponent } from '@shared/components/filter/components/filter-select.component';
 import { FilterDeleteButtonComponent } from '@shared/components/filter/components/filter-delete-button.component';
 import { FilterDateComponent } from '@shared/components/filter/components/filter-date.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 export function loggerFactory(): Logger {
   return new StageLoggerService();
 }
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, MatProgressSpinnerModule],
   declarations: [
     ButtonComponent,
     FirstLetterUppercasePipe,
@@ -47,6 +50,8 @@ export function loggerFactory(): Logger {
     FilterSelectComponent,
     FilterDeleteButtonComponent,
     FilterDateComponent,
+    SpinnerComponent,
+    PaginationComponent,
   ],
   exports: [
     ButtonComponent,
@@ -63,6 +68,7 @@ export function loggerFactory(): Logger {
     TextareaComponent,
     SelectComponent,
     FilterComponent,
+    PaginationComponent,
   ],
   providers: [
     StageLoggerService,

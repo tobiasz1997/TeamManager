@@ -4,8 +4,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ControlsOf } from '@shared/components/types/controls-of.type';
 import {
   IManageProject,
+  IManageProjectModel,
 } from '@features/manager/timers/pages/projects/components/manage-project/manage-project.interface';
-import { IManageProjectModel } from '@core/models/project.model';
 
 @Component({
   selector: 'tm-manage-project',
@@ -34,7 +34,8 @@ export class ManageProjectComponent {
     if (this.formGroup.invalid) {
       return;
     }
-    this.dialogRef.close(this.formGroup.value);
+    console.log(this.formGroup.value);
+    this.data.command(this.formGroup.value);
   }
 
   private updateForm(data: IManageProjectModel): void {
@@ -49,7 +50,7 @@ export class ManageProjectComponent {
           Validators.required,
         ),
         color: new FormControl(
-          null,
+          '#000000',
           Validators.required,
         ),
       },

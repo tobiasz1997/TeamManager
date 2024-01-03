@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from '@features/manager/timers/pages/projects/projects.service';
-import { IProjectModel } from '@core/models/project.model';
+import { ProjectDto } from '@core/api/project-client.service';
 
 @Component({
   selector: 'tm-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.sass'],
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
   public projects$ = this._projectsService.projects$;
 
   constructor(
@@ -15,15 +15,19 @@ export class ProjectsComponent {
   ) {
   }
 
+  ngOnInit() {
+    this._projectsService.init();
+  }
+
   public handleAddProject(): void {
     this._projectsService.showAddProjectModal();
   }
 
-  public handleEditProject(project: IProjectModel): void {
+  public handleEditProject(project: ProjectDto): void {
     this._projectsService.showEditProjectModal(project);
   }
 
-  public handleDeleteProject(project: IProjectModel): void {
+  public handleDeleteProject(project: ProjectDto): void {
     this._projectsService.deleteProject(project);
   }
 

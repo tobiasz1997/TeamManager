@@ -1,11 +1,11 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ISignUpModel } from '@core/models/sign-up.model';
 import { SignUpService } from '@features/auth/sign-up/sign-up.service';
 import { ControlsOf } from '@shared/components/types/controls-of.type';
 import { FormPasswordRulesMessage } from '@shared/constants/form-error-messages';
 import { matchedPasswordsValidator } from '@shared/validators/matched-passwords.validator';
 import { passwordValidator } from '@shared/validators/password.validator';
+import { SignUpRequest } from '@core/api/identity-client.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +19,6 @@ export class SignUpComponent {
 
   constructor(
     private readonly _signUpService: SignUpService,
-    private readonly _changeDetectorRef: ChangeDetectorRef,
   ) {
     this.buildForm();
   }
@@ -40,7 +39,7 @@ export class SignUpComponent {
   }
 
   private buildForm(): void {
-    this.formGroup = new FormGroup<ControlsOf<ISignUpModel & { repeatPassword: string }>>(
+    this.formGroup = new FormGroup<ControlsOf<SignUpRequest & { repeatPassword: string }>>(
       {
         firstName: new FormControl(
           '',

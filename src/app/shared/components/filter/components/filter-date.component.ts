@@ -10,7 +10,7 @@ import { LoggerMessagesService } from '@shared/services/logger-messages.service'
     <div class='itemContainer'>
       <button (click)='openDatepicker($event)' class='button'>
         <input class='input'
-               (input)='handleSelectedValue($any($event.target).value)'
+               (change)='handleSelectedValue($any($event.target).value)'
                type='date'
                [id]='itemId'
         >

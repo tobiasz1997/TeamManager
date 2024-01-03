@@ -4,7 +4,7 @@
     <tm-filter [data]='filterItems$ | async'></tm-filter>
   </section>
   <section>
-    <ng-container *ngFor='let timer of timers$ | async'>
+    <ng-container *ngFor='let timer of (timers$ | async)?.items; let first = first'>
       <div class='page__timer'>
         <tm-timer
           (onDelete)='handleDeleteTimer(timer)'
@@ -13,5 +13,8 @@
         ></tm-timer>
       </div>
     </ng-container>
+    <div class='page__pagination'>
+      <tm-pagination [itemCount]='(timers$ | async)?.totalResults' [pageSize]='pageSize'></tm-pagination>
+    </div>
   </section>
 </div>

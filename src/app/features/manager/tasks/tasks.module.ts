@@ -11,10 +11,11 @@ import { ManageTaskComponent } from './components/manage-task/manage-task.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TaskStatusToTextPipe } from './pipes/task-status-to-text.pipe';
+import { LoadMoreButtonComponent } from './components/load-more-button/load-more-button.component';
 
 @NgModule({
   imports: [TasksRoutingModule, SharedModule, DragDropModule, CommonModule, MatDialogModule, ReactiveFormsModule],
-  declarations: [TasksComponent, TaskComponent, TasksListHeaderComponent, ManageTaskComponent, TaskStatusToTextPipe],
+  declarations: [TasksComponent, TaskComponent, TasksListHeaderComponent, ManageTaskComponent, TaskStatusToTextPipe, LoadMoreButtonComponent],
   providers: [TasksService],
 })
 export class TasksModule {

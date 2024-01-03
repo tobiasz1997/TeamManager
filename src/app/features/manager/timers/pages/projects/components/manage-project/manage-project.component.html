@@ -27,6 +27,7 @@
 
     <div class='form__action'>
       <tm-button
+        [loading]='data.loading'
         [label]="data.isEdit ? 'Update' : 'Create'"
         size='large'
         type='submit'

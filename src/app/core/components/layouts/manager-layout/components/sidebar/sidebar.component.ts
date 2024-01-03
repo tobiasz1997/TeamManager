@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   HeaderActionButtonsEnum,
 } from '@core/components/layouts/full-layout/components/header/enums/header-action-buttons.enum';
@@ -10,6 +10,7 @@ import { HeaderAnimations } from '@shared/components/header/animations/header.an
 import { AppRoutes } from '../../../../../../app.routes';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { IRoute } from '@shared/interfaces/route.interface';
+import { ProfileService } from '@core/services/profile.service';
 
 @Component({
   selector: 'tm-sidebar',
@@ -21,7 +22,7 @@ import { IRoute } from '@shared/interfaces/route.interface';
     transition('false <=> true', animate(500)),
   ])],
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
   @Input() isSidebarOpen: boolean;
   @Output() onSidebarMove = new EventEmitter<void>();
 
@@ -29,7 +30,7 @@ export class SidebarComponent implements OnInit {
   public activePanel: HeaderActionButtonsEnum = null;
   public readonly ActiveButtonsEnum = HeaderActionButtonsEnum;
   public readonly isLoggedIn$ = this._identityService.isAuthenticated$;
-  public readonly identity$ = this._identityService.identity$;
+  public readonly identity$ = this._profileService.profile$;
   public readonly breakpoint$ = this._windowPropsService.breakpoint$;
   public readonly isSM$ = this._windowPropsService.isSM$;
 
@@ -40,19 +41,13 @@ export class SidebarComponent implements OnInit {
     { route: AppRoutes.profile, icon: 'account_circle' },
   ];
 
-  get activeUrl() {
-    return this._router.url;
-  }
-
   constructor(
     private readonly _router: Router,
     private readonly _identityService: IdentityService,
+    private readonly _profileService: ProfileService,
     private readonly _loggerMessageService: LoggerMessagesService,
     private readonly _windowPropsService: WindowPropsService,
   ) {
-  }
-
-  ngOnInit(): void {
   }
 
   public setActivePanel(value: HeaderActionButtonsEnum | null): void {
@@ -65,6 +60,10 @@ export class SidebarComponent implements OnInit {
 
   public handleSidebarOpen(): void {
     this.onSidebarMove.emit();
+  }
+
+  public isActiveUrl(path: string): boolean {
+    return path === '' ? false : this._router.url.includes(path);
   }
 
   public handleMobileSidebar(): void {

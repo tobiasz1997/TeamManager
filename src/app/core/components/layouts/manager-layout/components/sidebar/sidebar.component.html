@@ -71,7 +71,7 @@
     <div class='sidebar__content--routes'>
       <ng-container *ngFor='let value of sidebarMenuRoutes'>
         <button
-          [ngClass]="activeUrl === value.route.absolutePath ? 'sidebar__route--active' : 'sidebar__route--default'"
+          [ngClass]="isActiveUrl(value.route.absolutePath) ? 'sidebar__route--active' : 'sidebar__route--default'"
           (click)='handleRouteClick(value.route.absolutePath)'>
           <span class='material-icons-outlined'>{{value.icon}}</span>
           <div *ngIf='isSidebarOpen'>
@@ -88,7 +88,7 @@
     <div class='sidebar__content--routes'>
       <ng-container *ngFor='let value of sidebarMenuRoutes'>
         <button
-          [ngClass]="activeUrl === value.route.absolutePath ? 'sidebar__route--active' : 'sidebar__route--default'"
+          [ngClass]="isActiveUrl(value.route.absolutePath) ? 'sidebar__route--active' : 'sidebar__route--default'"
           (click)='handleRouteClick(value.route.absolutePath, true)'>
           <span class='material-icons-outlined'>{{value.icon}}</span>
           <div>

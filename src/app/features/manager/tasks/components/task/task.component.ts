@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITaskModel } from '@core/models/task.model';
+import { AssignmentDto } from '@core/api/assignment-client.service';
 
 @Component({
   selector: 'tm-task',
@@ -7,7 +7,7 @@ import { ITaskModel } from '@core/models/task.model';
   styleUrls: ['./task.component.sass'],
 })
 export class TaskComponent {
-  @Input() task: ITaskModel;
+  @Input() task: AssignmentDto;
   @Output() onEdit = new EventEmitter<void>();
   @Output() onDelete = new EventEmitter<void>();
 

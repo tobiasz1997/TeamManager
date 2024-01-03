@@ -1,0 +1,19 @@
+@import "variables"
+@import "breakpoints"
+@import "mixins"
+
+button
+  background-color: $button-primary-color
+  cursor: pointer
+  border: none
+  color: $white
+  padding: 5px
+  width: 100%
+  font-size: $font-xsm
+
+  &:hover
+    background: $button-primary-hover-color
+
+  &:focus
+    outline: none
+    background: $button-primary-hover-color

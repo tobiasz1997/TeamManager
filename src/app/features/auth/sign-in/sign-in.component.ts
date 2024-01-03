@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ISignInModel } from '@core/models/sign-in.model';
 import { SignInService } from '@features/auth/sign-in/sign-in.service';
 import { ControlsOf } from '@shared/components/types/controls-of.type';
 import { passwordValidator } from '@shared/validators/password.validator';
+import { SignInRequest } from '@core/api/identity-client.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -42,20 +42,20 @@ export class SignInComponent {
   }
 
   private buildForm(): void {
-    this.formGroup = new FormGroup<ControlsOf<ISignInModel>>(
+    this.formGroup = new FormGroup<ControlsOf<SignInRequest>>(
       {
         email: new FormControl(
           '',
-          Validators.compose([Validators.required, Validators.email])
+          Validators.compose([Validators.required, Validators.email]),
         ),
         password: new FormControl(
           '',
-          Validators.compose([Validators.required, passwordValidator])
+          Validators.compose([Validators.required, passwordValidator]),
         ),
       },
       {
         updateOn: 'submit',
-      }
+      },
     );
   }
 }

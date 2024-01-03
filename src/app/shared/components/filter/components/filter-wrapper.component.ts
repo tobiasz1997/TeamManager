@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IFilterItem } from '@shared/components/filter/filter.component';
 import { take } from 'rxjs';
+import { PAGE_NAME } from '@shared/constants/constant';
 
 @Component({
   selector: 'tm-filter-wrapper',
@@ -36,7 +37,7 @@ export abstract class FilterWrapperComponent<TItem = unknown> implements OnInit 
       [],
       {
         relativeTo: this.activatedRoute,
-        queryParams: { [this.data.name]: value },
+        queryParams: { [this.data.name]: value, [PAGE_NAME]: null },
         queryParamsHandling: 'merge',
       });
   };

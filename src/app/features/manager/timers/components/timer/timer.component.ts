@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITimerModel } from '@core/models/timer.model';
+import { TimerDto } from '@core/api/timer-client.service';
 
 @Component({
   selector: 'tm-timer',
@@ -8,7 +8,7 @@ import { ITimerModel } from '@core/models/timer.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimerComponent {
-  @Input() timer: ITimerModel;
+  @Input() timer: TimerDto;
   @Output() onEdit = new EventEmitter<void>();
   @Output() onDelete = new EventEmitter<void>();
 

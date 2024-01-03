@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { IProjectModel } from '@core/models/project.model';
+import { ProjectDto } from '@core/api/project-client.service';
 
 @Component({
   selector: 'tm-project',
@@ -8,7 +8,7 @@ import { IProjectModel } from '@core/models/project.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectComponent {
-  @Input() project: IProjectModel;
+  @Input() project: ProjectDto;
   @Output() onEdit = new EventEmitter<void>();
   @Output() onDelete = new EventEmitter<void>();
 
