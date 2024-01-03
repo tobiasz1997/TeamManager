@@ -1,0 +1,19 @@
+<div class='container'>
+  <ng-container *ngFor='let item of data; let i = index'>
+    <ng-container [ngSwitch]='item.type'>
+      <ng-container *ngSwitchCase="'date'">
+        <div class='container__item'>
+          <tm-filter-date [itemId]='i.toString()'
+                          [data]='item'
+          ></tm-filter-date>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'select'">
+        <div class='container__item'>
+          <tm-filter-select [data]='item'
+          ></tm-filter-select>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

@@ -25,9 +25,18 @@
       "dom"
     ],
     "paths": {
-      "@features/*": ["src/app/features/*"],
-      "@core/*": ["src/app/core/*"],
-      "@shared/*": ["src/app/shared/*"],
+      "@features/*": [
+        "src/app/features/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@environment/*": [
+        "src/environments/*"
+      ]
     }
   },
   "angularCompilerOptions": {
@@ -35,5 +44,5 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  },
+  }
 }

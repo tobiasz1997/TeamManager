@@ -19,14 +19,15 @@ export class InputComponent implements ControlValueAccessor {
 
   public isDisabled = false;
   public isPopoverVisible = false;
-  private _value = '';
+  private _value: any = '';
 
   public readonly formErrorMessages = FormErrorMessages;
 
-  onChange = (value: string) => {
+  onChange = (value: any) => {
     this.value = value;
   };
-  onTouch = () => {};
+  onTouch = () => {
+  };
 
   set value(value: any) {
     this.onTouch();

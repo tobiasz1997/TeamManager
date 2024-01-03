@@ -1,1 +1,32 @@
-<p>select works!</p>
+<label class='select'>
+  <div class='select__label'>
+    {{ label }}
+    <div (clickOutside)='handlePopover(null, false)'
+         *ngIf='popoverMessage'
+         [isActive]='isPopoverVisible'
+         class='select__label--help'
+         csClickOutside
+    >
+      <span (click)='handlePopover($event, null)' class='material-icons-round'>help_outline</span>
+      <div *ngIf='isPopoverVisible' class='select__popover'>
+        {{ popoverMessage }}
+      </div>
+    </div>
+  </div>
+  <span [ngClass]="{'select--invalid': showError}" class='select__select'>
+    <span *ngIf='icon' class='material-icons-round'>{{icon}}</span>
+    <select
+      (blur)='onTouch()'
+      (change)='onChange($any($event.target).value)'
+      [ngModel]='value'
+    >
+      <option *ngFor='let option of options' [value]='option.value'>{{ option.label }}</option>
+    </select>
+  </span>
+  <ng-container *ngFor='let error of formErrorMessages'>
+    <div *ngIf='control?.hasError(error.type) && showError' class='select__error'>
+      {{ errorMessage || error.message }}
+    </div>
+  </ng-container>
+
+</label>

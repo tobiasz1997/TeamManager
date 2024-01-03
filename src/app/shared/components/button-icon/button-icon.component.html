@@ -1,18 +1,19 @@
 <button
 
-  (click)="handleClick()"
-  [type]="type"
-  [disabled]="disabled"
+  (click)='handleClick()'
+  [disabled]='disabled'
   [ngClass]="{
     'button__primary': color === 'primary',
     'button__secondary' : color === 'secondary',
     'button__transparent': color === 'transparent',
+    'button__danger': color === 'danger',
     'button__small' : size === 'small',
     'button__default' : size === 'default',
     'button__large' : size === 'large',
     'button__disabled': disabled
   }"
+  [type]='type'
 >
-  <ng-content select="[icon]"></ng-content>
+  <ng-content select='[icon]'></ng-content>
 </button>
 

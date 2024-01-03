@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TaskStatusEnum } from '@core/models/task.model';
+import { AssignmentStatusType } from '@core/api/assignment-client.service';
 
 @Pipe({
   name: 'taskStatusToText',
@@ -7,15 +7,15 @@ import { TaskStatusEnum } from '@core/models/task.model';
 })
 export class TaskStatusToTextPipe implements PipeTransform {
 
-  transform(value: TaskStatusEnum): string {
+  transform(value: AssignmentStatusType): string {
     switch (value) {
-      case TaskStatusEnum.ToDo:
+      case AssignmentStatusType.ToDo:
         return 'Todo';
-      case TaskStatusEnum.InProgress:
+      case AssignmentStatusType.InProgress:
         return 'In Progress';
-      case TaskStatusEnum.Done:
+      case AssignmentStatusType.Done:
         return 'Done';
-      case TaskStatusEnum.Rejected:
+      case AssignmentStatusType.Aborted:
         return 'Rejected';
     }
   }

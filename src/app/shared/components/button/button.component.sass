@@ -1,5 +1,15 @@
 @import 'variables'
 
+button
+  display: inline-flex
+  align-items: center
+  position: relative
+
+  & > .spinner
+    position: absolute
+    left: 50%
+    transform: translate(-50%, 0)
+
 .button__primary
   cursor: pointer
   background: $button-primary-color

@@ -1,47 +1,53 @@
-import { Component, OnInit } from '@angular/core';
-import { LoggerMessagesService } from '@shared/services/logger-messages.service';
+import { Component } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TasksService } from '@features/manager/tasks/tasks.service';
-import { ITaskModel, TaskStatusEnum } from '@core/models/task.model';
+import { AssignmentDto, AssignmentStatusType } from '@core/api/assignment-client.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.sass'],
 })
-export class TasksComponent implements OnInit {
-  public todoTasks$ = this._tasksService.todoTasks$;
-  public inProgressTasks$ = this._tasksService.inProgressTasks$;
-  public doneTasks$ = this._tasksService.doneTasks$;
-  public rejectedTasks$ = this._tasksService.rejectedTasks$;
-  public readonly tasksStatusEnum = TaskStatusEnum;
+export class TasksComponent {
+  public todoTasks$ = this._tasksService.todoTasks$.pipe(map(x => x.items));
+  public inProgressTasks$ = this._tasksService.inProgressTasks$.pipe(map(x => x.items));
+  public doneTasks$ = this._tasksService.doneTasks$.pipe(map(x => x.items));
+  public rejectedTasks$ = this._tasksService.rejectedTasks$.pipe(map(x => x.items));
+
+  public todoTasksLoadMore$ = this._tasksService.todoTasks$.pipe(map(x => x.totalResults > x.items.length));
+  public inProgressTasksLoadMore$ = this._tasksService.inProgressTasks$.pipe(map(x => x.totalResults > x.items.length));
+  public doneTasksLoadMore$ = this._tasksService.doneTasks$.pipe(map(x => x.totalResults > x.items.length));
+  public rejectedTasksLoadMore$ = this._tasksService.rejectedTasks$.pipe(map(x => x.totalResults > x.items.length));
+
+  public readonly tasksStatusEnum = AssignmentStatusType;
 
   constructor(
-    private readonly _loggerService: LoggerMessagesService,
     private readonly _tasksService: TasksService,
   ) {
   }
 
-  ngOnInit(): void {
-  }
-
-  public drop(event: CdkDragDrop<Array<ITaskModel>>): void {
+  public handleDropTask(event: CdkDragDrop<Array<AssignmentDto>>): void {
     this._tasksService.handleDroppedTask(
-      event.previousContainer.id as TaskStatusEnum,
-      event.container.id as TaskStatusEnum,
+      event.previousContainer.id as AssignmentStatusType,
+      event.container.id as AssignmentStatusType,
       event.previousIndex, event.currentIndex,
     );
   }
 
-  public handleAddTask(type: TaskStatusEnum): void {
+  public handleAddTask(type: AssignmentStatusType): void {
     this._tasksService.showAddTaskModal(type);
   }
 
-  public handleEditTask(task: ITaskModel): void {
+  public handleEditTask(task: AssignmentDto): void {
     this._tasksService.showEditTaskModal(task);
   }
 
-  public handleDeleteTask(task: ITaskModel): void {
-    this._tasksService.showDeleteTaskModal(task);
+  public handleDeleteTask(task: AssignmentDto): void {
+    this._tasksService.deleteTask(task);
+  }
+
+  public handleLoadMore(type: AssignmentStatusType): void {
+    this._tasksService.loadMoreTasks(type);
   }
 }

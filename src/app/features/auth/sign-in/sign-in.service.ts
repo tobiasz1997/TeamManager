@@ -1,33 +1,24 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ISignInModel } from '@core/models/sign-in.model';
-import { AuthService } from '@core/services/auth.service';
 import { LoggerMessagesService } from '@shared/services/logger-messages.service';
 import { AppRoutes } from '../../../app.routes';
+import { SignInRequest } from '@core/api/identity-client.service';
+import { IdentityService } from '@core/services/identity.service';
 
 @Injectable()
 export class SignInService {
   constructor(
     private readonly _router: Router,
     private readonly _location: Location,
-    private readonly _authService: AuthService,
-    private readonly _loggerMessageService: LoggerMessagesService
-  ) {}
+    private readonly _identityService: IdentityService,
+    private readonly _loggerMessageService: LoggerMessagesService,
+  ) {
+  }
 
-  public signIn(payload: ISignInModel): void {
-    this._authService
-      .signIn(payload)
-      .then(() => {
-        this._loggerMessageService.successMsg('Successfully log in.');
-        void this._router.navigate([AppRoutes.home.absolutePath]);
-      })
-      .catch(error =>
-        this._loggerMessageService.errorMsg(
-          error,
-          'Something went wrong. Please try again.'
-        )
-      );
+  public signIn(payload: SignInRequest): void {
+    this._identityService
+      .signIn(payload, AppRoutes.home.absolutePath);
   }
 
   public navigateToCreateAccountPage(): void {

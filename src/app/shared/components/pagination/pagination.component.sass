@@ -1,0 +1,39 @@
+@import 'variables'
+
+.pagination
+  border-radius: $border-radius-lg
+  overflow: hidden
+  height: $button-default
+  display: flex
+  justify-content: center
+  align-items: center
+  width: max-content
+
+  &__button
+    border: none
+    height: $button-default
+    cursor: pointer
+    background: $button-secondary-color
+    color: $black
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &:hover:not(:disabled)
+      background: $button-secondary-hover-color
+
+    &:disabled
+      opacity: 0.5
+
+  &__page
+    font-size: $font-default
+    line-height: 1.7
+    padding: .375rem .75rem
+    height: 100%
+    font-weight: $font-weight-bold
+    color: $black
+    background: $button-secondary-color
+    display: flex
+    justify-content: center
+    align-items: center
+

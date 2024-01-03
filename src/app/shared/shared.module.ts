@@ -16,13 +16,21 @@ import { ProfilePanelComponent } from '@shared/components/header/components/prof
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { SelectComponent } from './components/select/select.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterComponent } from './components/filter/filter.component';
+import { FilterSelectComponent } from '@shared/components/filter/components/filter-select.component';
+import { FilterDeleteButtonComponent } from '@shared/components/filter/components/filter-delete-button.component';
+import { FilterDateComponent } from '@shared/components/filter/components/filter-date.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 export function loggerFactory(): Logger {
   return new StageLoggerService();
 }
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, MatProgressSpinnerModule],
   declarations: [
     ButtonComponent,
     FirstLetterUppercasePipe,
@@ -38,6 +46,12 @@ export function loggerFactory(): Logger {
     TextareaComponent,
     SelectComponent,
     ConfirmModalComponent,
+    FilterComponent,
+    FilterSelectComponent,
+    FilterDeleteButtonComponent,
+    FilterDateComponent,
+    SpinnerComponent,
+    PaginationComponent,
   ],
   exports: [
     ButtonComponent,
@@ -52,6 +66,9 @@ export function loggerFactory(): Logger {
     ProfilePanelComponent,
     FirstLetterUppercasePipe,
     TextareaComponent,
+    SelectComponent,
+    FilterComponent,
+    PaginationComponent,
   ],
   providers: [
     StageLoggerService,

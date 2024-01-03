@@ -1,7 +1,7 @@
 <button
-  (click)="handleClick()"
-  [type]="type"
-  [disabled]="disabled"
+  (click)='handleClick()'
+  [type]='type'
+  [disabled]='disabled'
   [ngClass]="{
     'button__primary': color === 'primary',
     'button__secondary' : color === 'secondary',
@@ -12,5 +12,10 @@
     'button__disabled': disabled
   }"
 >
-  {{ label | firstLetterUppercase }}
+  <span class='spinner' *ngIf='loading | async'>
+    <tm-spinner></tm-spinner>
+  </span>
+  <span [ngStyle]="{'visibility': (loading | async) ? 'hidden' : 'visible'}">
+    {{ label | firstLetterUppercase }}
+  </span>
 </button>

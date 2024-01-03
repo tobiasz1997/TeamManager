@@ -1,0 +1,22 @@
+<div [tmTimerStylesColor]='timer.project?.color' class='container'>
+  <div class='container__date'>{{ timer.date | date:"dd/MM" }}</div>
+  <div *ngIf='timer.project' class='container__project' id='project'>{{ timer.project.label }}</div>
+  <div class='container__description'>{{ timer.description }}</div>
+  <div class='container__actions'>
+    <tm-button-icon
+      color='secondary'
+      (action)='onEditClick()'
+      size='small'
+    >
+      <span class='material-icons-outlined container__button--icon' icon>edit</span>
+    </tm-button-icon>
+    <tm-button-icon
+      color='danger'
+      (action)='onDeleteClick()'
+      size='small'
+    >
+      <span class='material-icons-outlined container__button--icon' icon>delete</span>
+    </tm-button-icon>
+  </div>
+</div>
+

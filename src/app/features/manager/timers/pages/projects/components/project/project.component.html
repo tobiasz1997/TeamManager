@@ -1,0 +1,20 @@
+<div [style.border-color]='project.color' class='container'>
+  <div class='container__label'>{{ project.label }}</div>
+  <div class='container__actions'>
+    <tm-button-icon
+      (action)='onEditClick()'
+      color='secondary'
+      size='small'
+    >
+      <span class='material-icons-outlined container__button--icon' icon>edit</span>
+    </tm-button-icon>
+    <tm-button-icon
+      (action)='onDeleteClick()'
+      color='danger'
+      size='small'
+    >
+      <span class='material-icons-outlined container__button--icon' icon>delete</span>
+    </tm-button-icon>
+  </div>
+</div>
+

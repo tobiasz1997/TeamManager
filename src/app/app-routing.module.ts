@@ -59,6 +59,13 @@ const routes: Routes = [
             m => m.ProfileModule,
           ),
       },
+      {
+        path: AppRoutes.timers.path,
+        loadChildren: () =>
+          import('./features/manager/timers/timers.module').then(
+            m => m.TimersModule,
+          ),
+      },
     ],
   },
   {

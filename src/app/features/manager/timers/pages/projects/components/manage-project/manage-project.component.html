@@ -1,0 +1,38 @@
+<div class='container'>
+  <div class='container__button'>
+    <tm-button-icon
+      (action)='onClose()'
+      size='small'>
+      <span class='material-icons-outlined container__button--icon' icon>close</span>
+    </tm-button-icon>
+  </div>
+  <h3 class='container__title'>{{ data.isEdit ? 'Edit project' : 'Add project'}}</h3>
+
+  <form (ngSubmit)='handleSubmit()' [formGroup]='formGroup' class='form'>
+    <mat-dialog-content>
+      <div class='form__field'>
+        <tm-input
+          formControlName='label'
+          label='Project'
+        ></tm-input>
+      </div>
+      <div class='form__field'>
+        <tm-input
+          formControlName='color'
+          label='Color'
+          type='color'
+        ></tm-input>
+      </div>
+    </mat-dialog-content>
+
+    <div class='form__action'>
+      <tm-button
+        [loading]='data.loading'
+        [label]="data.isEdit ? 'Update' : 'Create'"
+        size='large'
+        type='submit'
+      ></tm-button>
+    </div>
+  </form>
+</div>
+

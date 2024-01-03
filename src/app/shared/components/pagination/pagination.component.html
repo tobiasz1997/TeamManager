@@ -1,0 +1,15 @@
+<div class='pagination' *ngIf='itemCount > 0 && itemCount > pageSize'>
+  <div>
+    <button class='pagination__button' [disabled]='page === 1' (click)='handlePageChange(page - 1)'>
+      <span class='material-icons-round'>chevron_left</span>
+    </button>
+  </div>
+  <div class='pagination__page'>
+    {{ page }}
+  </div>
+  <div>
+    <button class='pagination__button' [disabled]='page === numberOfPages' (click)='handlePageChange(page + 1)'>
+      <span class='material-icons-round'>chevron_right</span>
+    </button>
+  </div>
+</div>

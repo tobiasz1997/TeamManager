@@ -1,5 +1,5 @@
 export const LocalStorageKeys = {
-  IdentityKey: 'IDENTITY_KEY',
+  RefreshTokenKey: 'REFRESH_TOKEN_KEY',
   ProfileKey: 'PROFILE_KEY',
   SidebarOpenKey: 'SIDEBAR_OPEN_KEY',
 };

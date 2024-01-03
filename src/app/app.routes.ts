@@ -21,14 +21,19 @@ export const AppRoutes = {
     path: 'tasks',
     absolutePath: '/tasks',
   } as IRoute,
-  bundy: {
-    title: 'bundy',
-    path: 'bundy',
-    absolutePath: '/bundy',
+  timers: {
+    title: 'timers',
+    path: 'timers',
+    absolutePath: '/timers',
   } as IRoute,
   profile: {
     title: 'profile',
     path: 'profile',
     absolutePath: '/profile',
+  } as IRoute,
+  projects: {
+    title: 'projects',
+    path: 'projects',
+    absolutePath: '/timers/projects',
   } as IRoute,
 };

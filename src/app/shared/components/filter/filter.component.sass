@@ -1,0 +1,39 @@
+@import 'variables'
+
+.container
+  cursor: pointer
+  background: $button-secondary-color
+  border: none
+  border-radius: $border-radius-lg
+  display: inline-flex
+  align-items: center
+
+  &__item
+    position: relative
+
+  & > *:not(:first-child)
+    &:before
+      content: ""
+      position: absolute
+      left: 0
+      top: 0
+      height: 100%
+      display: block
+      width: 1px
+      background-color: $tertiary-color
+
+.button__date
+  position: relative
+  font-size: $font-default
+  line-height: 1.7
+  height: $button-default
+  padding: .375rem .75rem
+  font-weight: $font-weight-bold
+  border: none
+  color: $black
+  background-color: transparent
+
+  &:focus
+    opacity: 0.8
+
+
