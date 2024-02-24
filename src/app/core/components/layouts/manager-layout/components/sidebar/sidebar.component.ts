@@ -10,7 +10,7 @@ import { HeaderAnimations } from '@shared/components/header/animations/header.an
 import { AppRoutes } from '../../../../../../app.routes';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { IRoute } from '@shared/interfaces/route.interface';
-import { ProfileService } from '@core/services/profile.service';
+import { UserService } from '@core/services/user.service';
 
 @Component({
   selector: 'tm-sidebar',
@@ -30,7 +30,7 @@ export class SidebarComponent {
   public activePanel: HeaderActionButtonsEnum = null;
   public readonly ActiveButtonsEnum = HeaderActionButtonsEnum;
   public readonly isLoggedIn$ = this._identityService.isAuthenticated$;
-  public readonly identity$ = this._profileService.profile$;
+  public readonly identity$ = this._userService.user$;
   public readonly breakpoint$ = this._windowPropsService.breakpoint$;
   public readonly isSM$ = this._windowPropsService.isSM$;
 
@@ -44,7 +44,7 @@ export class SidebarComponent {
   constructor(
     private readonly _router: Router,
     private readonly _identityService: IdentityService,
-    private readonly _profileService: ProfileService,
+    private readonly _userService: UserService,
     private readonly _loggerMessageService: LoggerMessagesService,
     private readonly _windowPropsService: WindowPropsService,
   ) {

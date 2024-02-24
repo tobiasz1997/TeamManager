@@ -7,7 +7,7 @@ import { IdentityService } from '@core/services/identity.service';
 import { LoggerMessagesService } from '@shared/services/logger-messages.service';
 import { AppRoutes } from '../../../../../../app.routes';
 import { HeaderAnimations } from '@shared/components/header/animations/header.animation';
-import { ProfileService } from '@core/services/profile.service';
+import { UserService } from '@core/services/user.service';
 
 @Component({
   selector: 'tm-header',
@@ -19,11 +19,11 @@ export class HeaderComponent {
   public activePanel: HeaderActionButtonsEnum = null;
   public readonly ActiveButtonsEnum = HeaderActionButtonsEnum;
   public readonly isLoggedIn$ = this._identityService.isAuthenticated$;
-  public readonly identity$ = this._profileService.profile$;
+  public readonly identity$ = this._userService.user$;
 
   constructor(
     private readonly _router: Router,
-    private readonly _profileService: ProfileService,
+    private readonly _userService: UserService,
     private readonly _identityService: IdentityService,
     private readonly _loggerMessageService: LoggerMessagesService,
   ) {

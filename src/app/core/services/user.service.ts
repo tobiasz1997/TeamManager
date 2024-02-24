@@ -5,11 +5,11 @@ import { UserClient, UserDto } from '@core/api/user-client.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ProfileService {
-  private readonly _profile$ = new BehaviorSubject<UserDto>(null);
+export class UserService {
+  private readonly _user$ = new BehaviorSubject<UserDto>(null);
 
-  get profile$(): Observable<UserDto> {
-    return this._profile$;
+  get user$(): Observable<UserDto> {
+    return this._user$;
   }
 
   constructor(
@@ -18,18 +18,18 @@ export class ProfileService {
   }
 
   public loadData(): void {
-    if (!this._profile$.value) {
-      this.loadProfile();
+    if (!this._user$.value) {
+      this.loadUser();
     }
   }
 
   public clearData(): void {
-    this._profile$.next(null);
+    this._user$.next(null);
   }
 
-  private loadProfile(): void {
+  private loadUser(): void {
     this._userClient
       .me()
-      .subscribe(user => this._profile$.next(user));
+      .subscribe(user => this._user$.next(user));
   }
 }

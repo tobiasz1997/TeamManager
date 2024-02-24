@@ -1,1 +1,12 @@
-<p>profile works!</p>
+<div class='page'>
+  <tm-profile-header></tm-profile-header>
+
+  <section class='page__data' *ngIf='(user$ | async) as user'>
+    <div class='page__data--label'>First name</div>
+    <div class='page__data--value'>{{ user.firstName }}</div>
+    <div class='page__data--label'>Last name</div>
+    <div class='page__data--value'>{{ user.lastName }}</div>
+    <div class='page__data--label'>Email</div>
+    <div class='page__data--value'>{{ user.email }}</div>
+  </section>
+</div>
