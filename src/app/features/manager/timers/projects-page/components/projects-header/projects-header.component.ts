@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppRoutes } from '../../../../../app.routes';
+import { AppRoutes } from '../../../../../../app.routes';
 
 @Component({
-  selector: 'tm-timers-header',
-  templateUrl: './timers-header.component.html',
-  styleUrls: ['./timers-header.component.sass'],
+  selector: 'tm-projects-header',
+  templateUrl: './projects-header.component.html',
+  styleUrls: ['./projects-header.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimersHeaderComponent {
+export class ProjectsHeaderComponent {
   @Output() onAdd = new EventEmitter<void>();
 
   constructor(
@@ -20,7 +20,8 @@ export class TimersHeaderComponent {
     this.onAdd.next();
   }
 
-  public navigateToProjects(): void {
-    void this._router.navigate([AppRoutes.projects.absolutePath]);
+  public navigateToTimers(): void {
+    void this._router.navigate([AppRoutes.timers.absolutePath]);
   }
+
 }

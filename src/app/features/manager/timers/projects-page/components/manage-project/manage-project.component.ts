@@ -5,7 +5,7 @@ import { ControlsOf } from '@shared/components/types/controls-of.type';
 import {
   IManageProject,
   IManageProjectModel,
-} from '@features/manager/timers/pages/projects/components/manage-project/manage-project.interface';
+} from '@features/manager/timers/projects-page/components/manage-project/manage-project.interface';
 
 @Component({
   selector: 'tm-manage-project',

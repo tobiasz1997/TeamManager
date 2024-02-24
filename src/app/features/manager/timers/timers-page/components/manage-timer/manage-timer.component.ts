@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 import {
   IManageTimer,
   IManageTimerModel,
-} from '@features/manager/timers/components/manage-timer/manage-timer.interface';
+} from '@features/manager/timers/timers-page/components/manage-timer/manage-timer.interface';
 
 @Component({
   selector: 'app-manage-timer',

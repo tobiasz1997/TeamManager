@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { ProjectsComponent } from '@features/manager/timers/pages/projects/projects.component';
+import { ProjectsPageComponent } from '@features/manager/timers/projects-page/projects-page.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectsService } from '@features/manager/timers/pages/projects/projects.service';
+import { ProjectsPageService } from '@features/manager/timers/projects-page/projects-page.service';
 import { ProjectsHeaderComponent } from './components/projects-header/projects-header.component';
 import { SharedModule } from '@shared/shared.module';
 import { ProjectComponent } from './components/project/project.component';
@@ -13,15 +13,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 const ProjectsRoutes: Routes = [
   {
     path: '',
-    component: ProjectsComponent,
+    component: ProjectsPageComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(ProjectsRoutes), SharedModule, CommonModule, MatDialogModule, ReactiveFormsModule],
-  declarations: [ProjectsComponent, ProjectsHeaderComponent, ProjectComponent, ManageProjectComponent],
-  providers: [ProjectsService],
+  declarations: [ProjectsPageComponent, ProjectsHeaderComponent, ProjectComponent, ManageProjectComponent],
+  providers: [ProjectsPageService],
 })
-export class ProjectsModule {
+export class ProjectsPageModule {
 }
 

@@ -62,7 +62,7 @@ const routes: Routes = [
       {
         path: AppRoutes.timers.path,
         loadChildren: () =>
-          import('./features/manager/timers/timers.module').then(
+          import('@features/manager/timers/timers.module').then(
             m => m.TimersModule,
           ),
       },

@@ -4,17 +4,17 @@ import { LoggerMessagesService } from '@shared/services/logger-messages.service'
 import { ProjectService } from '@core/services/project.service';
 import {
   ManageProjectComponent,
-} from '@features/manager/timers/pages/projects/components/manage-project/manage-project.component';
+} from '@features/manager/timers/projects-page/components/manage-project/manage-project.component';
 import {
   IManageProject,
   IManageProjectModel,
-} from '@features/manager/timers/pages/projects/components/manage-project/manage-project.interface';
+} from '@features/manager/timers/projects-page/components/manage-project/manage-project.interface';
 import { Confirm } from '@shared/decorators/confirmation.decorator';
 import { ProjectDto } from '@core/api/project-client.service';
 import { LoaderService } from '@shared/services/loader.service';
 
 @Injectable()
-export class ProjectsService {
+export class ProjectsPageService {
   public projects$ = this._projectService.projects$;
 
   private manageProjectDialogRef: MatDialogRef<ManageProjectComponent>;

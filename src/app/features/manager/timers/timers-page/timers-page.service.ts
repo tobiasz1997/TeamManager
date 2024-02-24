@@ -2,11 +2,13 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { TimerService } from '@core/services/timer.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoggerMessagesService } from '@shared/services/logger-messages.service';
-import { ManageTimerComponent } from '@features/manager/timers/components/manage-timer/manage-timer.component';
+import {
+  ManageTimerComponent,
+} from '@features/manager/timers/timers-page/components/manage-timer/manage-timer.component';
 import {
   IManageTimer,
   IManageTimerModel,
-} from '@features/manager/timers/components/manage-timer/manage-timer.interface';
+} from '@features/manager/timers/timers-page/components/manage-timer/manage-timer.interface';
 import { Confirm } from '@shared/decorators/confirmation.decorator';
 import { IFilterItem } from '@shared/components/filter/filter.component';
 import { ProjectService } from '@core/services/project.service';
@@ -17,10 +19,10 @@ import { TimerDto } from '@core/api/timer-client.service';
 import { LoaderService } from '@shared/services/loader.service';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
-import { TimerFilterEnum } from '@features/manager/timers/enums/timer-filter.enum';
+import { TimerFilterEnum } from '@features/manager/timers/timers-page/enums/timer-filter.enum';
 
 @Injectable()
-export class TimersService implements OnDestroy {
+export class TimersPageService implements OnDestroy {
   public timers$ = this._timerService.timers$;
   private _filterItems$ = new BehaviorSubject<Array<IFilterItem>>(null);
   private _destroy$ = new Subject<void>();
