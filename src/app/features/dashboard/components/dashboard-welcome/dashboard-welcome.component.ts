@@ -30,7 +30,7 @@ export class DashboardWelcomeComponent implements OnInit, AfterViewInit, OnDestr
   public appFeatures: string | null = '';
 
   private _currentFeatureIndex = 0;
-  private _appFeaturesInterval: NodeJS.Timer | null = null;
+  private _appFeaturesInterval: NodeJS.Timeout | null = null;
   private readonly _appFeaturesIntervalTime = 3_000;
   private readonly _arrayOfAppFeatures: Array<string> = [
     'tasks', 'leave plans', 'work time',

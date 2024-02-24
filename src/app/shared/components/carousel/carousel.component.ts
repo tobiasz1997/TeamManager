@@ -11,7 +11,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @Output() leftArrowClick$ = new EventEmitter<void>;
   @Output() rightArrowClick$ = new EventEmitter<void>;
 
-  private _timeout: NodeJS.Timer | null = null;
+  private _timeout: NodeJS.Timeout | null = null;
 
   constructor() {
   }
