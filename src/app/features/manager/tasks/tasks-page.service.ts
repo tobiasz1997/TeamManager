@@ -8,7 +8,7 @@ import { AssignmentDto, AssignmentStatusType } from '@core/api/assignment-client
 import { LoaderService } from '@shared/services/loader.service';
 
 @Injectable()
-export class TasksService {
+export class TasksPageService {
   public todoTasks$ = this._taskService.todoTasks$;
   public inProgressTasks$ = this._taskService.inProgressTasks$;
   public doneTasks$ = this._taskService.doneTasks$;

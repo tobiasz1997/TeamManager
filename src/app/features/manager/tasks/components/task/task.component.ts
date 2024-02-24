@@ -11,9 +11,6 @@ export class TaskComponent {
   @Output() onEdit = new EventEmitter<void>();
   @Output() onDelete = new EventEmitter<void>();
 
-  constructor() {
-  }
-
   public onEditClick(): void {
     this.onEdit.next();
   }

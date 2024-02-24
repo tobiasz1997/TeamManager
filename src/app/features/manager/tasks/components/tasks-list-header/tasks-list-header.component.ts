@@ -9,9 +9,6 @@ export class TasksListHeaderComponent {
   @Input() title: string;
   @Output() onAdd = new EventEmitter<void>();
 
-  constructor() {
-  }
-
   public onAddButtonClick() {
     this.onAdd.next();
   }

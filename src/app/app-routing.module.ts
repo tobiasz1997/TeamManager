@@ -48,8 +48,8 @@ const routes: Routes = [
       {
         path: AppRoutes.tasks.path,
         loadChildren: () =>
-          import('./features/manager/tasks/tasks.module').then(
-            m => m.TasksModule,
+          import('@features/manager/tasks/tasks-page.module').then(
+            m => m.TasksPageModule,
           ),
       },
       {
