@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-welcome',
@@ -24,10 +24,9 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, O
       ),
     ]),
   ],
-  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class DashboardWelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  public appFeatures: string | null = '';
+  public appFeatures = signal<string | null>('');
 
   private _currentFeatureIndex = 0;
   private _appFeaturesInterval: NodeJS.Timeout | null = null;
@@ -36,13 +35,8 @@ export class DashboardWelcomeComponent implements OnInit, AfterViewInit, OnDestr
     'tasks', 'leave plans', 'work time',
   ];
 
-  constructor(
-    private readonly _changeDetectorRef: ChangeDetectorRef,
-  ) {
-  }
-
   public ngOnInit(): void {
-    this.appFeatures = this._arrayOfAppFeatures[this._arrayOfAppFeatures.length - 1];
+    this.appFeatures.set(this._arrayOfAppFeatures[this._arrayOfAppFeatures.length - 1]);
   }
 
   public ngOnDestroy() {
@@ -51,14 +45,13 @@ export class DashboardWelcomeComponent implements OnInit, AfterViewInit, OnDestr
 
   public ngAfterViewInit() {
     this._appFeaturesInterval = setInterval(() => {
-      this.appFeatures = null;
+      this.appFeatures.set(null);
       setTimeout(() => {
         if (this._currentFeatureIndex == this._arrayOfAppFeatures.length) {
           this._currentFeatureIndex = 0;
         }
-        this.appFeatures = this._arrayOfAppFeatures[this._currentFeatureIndex];
+        this.appFeatures.set(this._arrayOfAppFeatures[this._currentFeatureIndex]);
         this._currentFeatureIndex += 1;
-        this._changeDetectorRef.detectChanges();
       }, 1000);
     }, this._appFeaturesIntervalTime);
   }

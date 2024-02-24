@@ -15,8 +15,8 @@ const routes: Routes = [
         path: AppRoutes.home.path,
         pathMatch: 'full',
         loadChildren: () =>
-          import('./features/dashboard/dashboard.module').then(
-            m => m.DashboardModule,
+          import('@features/dashboard/dashboard-page.module').then(
+            m => m.DashboardPageModule,
           ),
       },
     ],

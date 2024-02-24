@@ -1,8 +1,8 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { DashboardRoutingModule } from "@features/dashboard/dashboard-routing.module";
-import { DashboardComponent } from "@features/dashboard/dashboard.component";
-import { SharedModule } from "@shared/shared.module";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { DashboardPageRoutingModule } from '@features/dashboard/dashboard-page-routing.module';
+import { DashboardPageComponent } from '@features/dashboard/dashboard-page.component';
+import { SharedModule } from '@shared/shared.module';
 import { ShapeDividerSvgComponent } from './components/shape-divider-svg/shape-divider-svg.component';
 import { DashboardWelcomeComponent } from './components/dashboard-welcome/dashboard-welcome.component';
 import { DashboardAppFeaturesComponent } from './components/dashboard-app-features/dashboard-app-features.component';
@@ -12,13 +12,14 @@ import { DashboardAppFeaturesComponent } from './components/dashboard-app-featur
   imports: [
     SharedModule,
     CommonModule,
-    DashboardRoutingModule,
+    DashboardPageRoutingModule,
   ],
   declarations: [
-    DashboardComponent,
+    DashboardPageComponent,
     ShapeDividerSvgComponent,
     DashboardWelcomeComponent,
-    DashboardAppFeaturesComponent
-  ]
+    DashboardAppFeaturesComponent,
+  ],
 })
-export class DashboardModule {}
+export class DashboardPageModule {
+}
