@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpRoutingModule } from '@features/auth/sign-up/sign-up-routing.module';
-import { SignUpComponent } from '@features/auth/sign-up/sign-up.component';
-import { SignUpService } from '@features/auth/sign-up/sign-up.service';
+import { SignUpPageComponent } from '@features/auth/sign-up/sign-up-page.component';
+import { SignUpPageService } from '@features/auth/sign-up/sign-up-page.service';
 import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { SharedModule } from '@shared/shared.module';
     ReactiveFormsModule,
     CommonModule,
   ],
-  declarations: [SignUpComponent],
-  providers: [SignUpService],
+  declarations: [SignUpPageComponent],
+  providers: [SignUpPageService],
 })
-export class SignUpModule {}
+export class SignUpPageModule {
+}

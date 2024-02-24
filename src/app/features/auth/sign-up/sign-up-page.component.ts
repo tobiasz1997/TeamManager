@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SignUpService } from '@features/auth/sign-up/sign-up.service';
+import { SignUpPageService } from '@features/auth/sign-up/sign-up-page.service';
 import { ControlsOf } from '@shared/components/types/controls-of.type';
 import { FormPasswordRulesMessage } from '@shared/constants/form-error-messages';
 import { matchedPasswordsValidator } from '@shared/validators/matched-passwords.validator';
@@ -8,23 +8,23 @@ import { passwordValidator } from '@shared/validators/password.validator';
 import { SignUpRequest } from '@core/api/identity-client.service';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.sass'],
+  selector: 'app-sign-up-page',
+  templateUrl: './sign-up-page.component.html',
+  styleUrls: ['./sign-up-page.component.sass'],
 })
-export class SignUpComponent {
+export class SignUpPageComponent {
   public formGroup: FormGroup;
   public readonly formPasswordRulesMessage = FormPasswordRulesMessage;
 
 
   constructor(
-    private readonly _signUpService: SignUpService,
+    private readonly _signUpPageService: SignUpPageService,
   ) {
     this.buildForm();
   }
 
   public backToPreviousPage(): void {
-    this._signUpService.navigateBack();
+    this._signUpPageService.navigateBack();
   }
 
   public handleSubmit(): void {
@@ -32,10 +32,10 @@ export class SignUpComponent {
     this.formGroup.updateValueAndValidity();
 
     if (this.formGroup.invalid) {
-      this._signUpService.showWarningMessage('Invalid form.');
+      this._signUpPageService.showWarningMessage('Invalid form.');
       return;
     }
-    this._signUpService.signUp(this.formGroup.value);
+    this._signUpPageService.signUp(this.formGroup.value);
   }
 
   private buildForm(): void {

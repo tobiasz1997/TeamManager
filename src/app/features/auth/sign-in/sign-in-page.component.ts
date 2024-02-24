@@ -1,44 +1,44 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SignInService } from '@features/auth/sign-in/sign-in.service';
+import { SignInPageService } from '@features/auth/sign-in/sign-in-page.service';
 import { ControlsOf } from '@shared/components/types/controls-of.type';
 import { passwordValidator } from '@shared/validators/password.validator';
 import { SignInRequest } from '@core/api/identity-client.service';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.sass'],
+  selector: 'app-sign-in-page',
+  templateUrl: './sign-in-page.component.html',
+  styleUrls: ['./sign-in-page.component.sass'],
 })
-export class SignInComponent {
+export class SignInPageComponent {
   public formGroup: FormGroup;
 
-  constructor(private readonly _signInService: SignInService) {
+  constructor(private readonly _signInPageService: SignInPageService) {
     this.buildForm();
   }
 
   public backToPreviousPage(): void {
-    this._signInService.navigateBack();
+    this._signInPageService.navigateBack();
   }
 
-  public async handleSubmit(): Promise<void> {
+  public handleSubmit(): void {
     this.formGroup.markAllAsTouched();
     this.formGroup.updateValueAndValidity();
 
     if (this.formGroup.invalid) {
-      this._signInService.showErrorMessage('Invalid form.');
+      this._signInPageService.showErrorMessage('Invalid form.');
       return;
     }
 
-    await this._signInService.signIn(this.formGroup.value);
+    this._signInPageService.signIn(this.formGroup.value);
   }
 
   public handleForgotPassword(): void {
-    this._signInService.navigateToForgotPasswordPage();
+    this._signInPageService.navigateToForgotPasswordPage();
   }
 
   public handleCreateAccount(): void {
-    this._signInService.navigateToCreateAccountPage();
+    this._signInPageService.navigateToCreateAccountPage();
   }
 
   private buildForm(): void {

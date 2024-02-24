@@ -28,15 +28,15 @@ const routes: Routes = [
       {
         path: AppRoutes.signIn.path,
         loadChildren: () =>
-          import('./features/auth/sign-in/sign-in.module').then(
-            m => m.SignInModule,
+          import('@features/auth/sign-in/sign-in-page.module').then(
+            m => m.SignInPageModule,
           ),
       },
       {
         path: AppRoutes.signUp.path,
         loadChildren: () =>
-          import('./features/auth/sign-up/sign-up.module').then(
-            m => m.SignUpModule,
+          import('@features/auth/sign-up/sign-up-page.module').then(
+            m => m.SignUpPageModule,
           ),
       },
     ],
