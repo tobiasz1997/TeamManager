@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  signal,
+  SimpleChanges,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
@@ -15,7 +25,7 @@ export class PaginationComponent implements OnInit, OnChanges, OnDestroy {
   @Input() pageSize: number;
   @Output() setPage = new EventEmitter<number>();
 
-  public numberOfPages = 0;
+  public numberOfPages = signal(0);
 
   private _destroy = new Subject<void>();
 
@@ -35,7 +45,7 @@ export class PaginationComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.itemCount || changes.pageSize) {
-      this.numberOfPages = Math.ceil(this.itemCount / this.pageSize);
+      this.numberOfPages.set(Math.ceil(this.itemCount / this.pageSize));
     }
   }
 

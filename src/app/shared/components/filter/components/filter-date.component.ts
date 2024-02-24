@@ -14,14 +14,14 @@ import { LoggerMessagesService } from '@shared/services/logger-messages.service'
                type='date'
                [id]='itemId'
         >
-        <ng-container *ngIf='value; else placeholder'>
-          {{ value | date:dateFormat }}
+        <ng-container *ngIf='value(); else placeholder'>
+          {{ value() | date:dateFormat }}
         </ng-container>
         <ng-template #placeholder>
           {{ data.placeholder }}
         </ng-template>
       </button>
-      <ng-container *ngIf='value'>
+      <ng-container *ngIf='value()'>
         <tm-filter-delete-button (action)='clearValue()'></tm-filter-delete-button>
       </ng-container>
     </div>
@@ -33,8 +33,8 @@ export class FilterDateComponent extends FilterWrapperComponent<Date> {
   public readonly dateFormat = 'dd/MM';
 
   constructor(
-    private readonly _activatedRoute: ActivatedRoute,
-    private readonly _router: Router,
+    public readonly _activatedRoute: ActivatedRoute,
+    public readonly _router: Router,
     private readonly _loggerMessageService: LoggerMessagesService,
   ) {
     super(_activatedRoute, _router);
@@ -52,12 +52,12 @@ export class FilterDateComponent extends FilterWrapperComponent<Date> {
   }
 
   public clearValue(): void {
-    this.value = null;
+    this.value.set(null);
     this.updateRoute(null);
   }
 
   public handleSelectedValue(item: Date | string): void {
-    this.value = new Date(item);
+    this.value.set(new Date(item));
     this.updateRoute(item.toString());
   }
 

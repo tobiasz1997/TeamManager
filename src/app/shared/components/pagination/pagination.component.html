@@ -8,7 +8,7 @@
     {{ page }}
   </div>
   <div>
-    <button class='pagination__button' [disabled]='page === numberOfPages' (click)='handlePageChange(page + 1)'>
+    <button (click)='handlePageChange(page + 1)' [disabled]='page === numberOfPages()' class='pagination__button'>
       <span class='material-icons-round'>chevron_right</span>
     </button>
   </div>

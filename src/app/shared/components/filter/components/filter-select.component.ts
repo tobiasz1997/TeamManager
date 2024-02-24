@@ -13,14 +13,14 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
          (clickOutside)='isDropdownVisible = false'
     >
       <button class='button' (click)='isDropdownVisible = !isDropdownVisible'>
-        <ng-container *ngIf='value; else placeholder'>
-          {{ value.label }}
+        <ng-container *ngIf='value(); else placeholder'>
+          {{ value().label }}
         </ng-container>
         <ng-template #placeholder>
           {{ data.placeholder }}
         </ng-template>
       </button>
-      <ng-container *ngIf='value'>
+      <ng-container *ngIf='value()'>
         <tm-filter-delete-button (action)='clearValue()'></tm-filter-delete-button>
       </ng-container>
       <div *ngIf='isDropdownVisible' class='select'>
@@ -35,20 +35,20 @@ export class FilterSelectComponent extends FilterWrapperComponent<IOption<any>> 
   public isDropdownVisible = false;
 
   constructor(
-    private readonly _activatedRoute: ActivatedRoute,
-    private readonly _router: Router,
+    public readonly _activatedRoute: ActivatedRoute,
+    public readonly _router: Router,
   ) {
     super(_activatedRoute, _router);
   }
 
   public handleSelectedValue(item: IOption<any>): void {
-    this.value = item;
+    this.value.set(item);
     this.updateRoute(item.value);
     this.isDropdownVisible = false;
   }
 
   public clearValue(): void {
-    this.value = null;
+    this.value.set(null);
     this.updateRoute(null);
   }
 

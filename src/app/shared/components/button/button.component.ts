@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'tm-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   @Input() label = '';
@@ -14,9 +15,6 @@ export class ButtonComponent {
   @Input() loading: Observable<boolean>;
   @Input() disabled = false;
   @Output() action = new EventEmitter<void>();
-
-  constructor() {
-  }
 
   public handleClick(): void {
     !this.disabled && this.action.emit();

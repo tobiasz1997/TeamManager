@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignUpPageService } from '@features/auth/sign-up/sign-up-page.service';
-import { ControlsOf } from '@shared/components/types/controls-of.type';
+import { ControlsOf } from '@shared/types/controls-of.type';
 import { FormPasswordRulesMessage } from '@shared/constants/form-error-messages';
 import { matchedPasswordsValidator } from '@shared/validators/matched-passwords.validator';
 import { passwordValidator } from '@shared/validators/password.validator';

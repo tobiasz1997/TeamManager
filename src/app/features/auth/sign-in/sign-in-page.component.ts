@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignInPageService } from '@features/auth/sign-in/sign-in-page.service';
-import { ControlsOf } from '@shared/components/types/controls-of.type';
+import { ControlsOf } from '@shared/types/controls-of.type';
 import { passwordValidator } from '@shared/validators/password.validator';
 import { SignInRequest } from '@core/api/identity-client.service';
 

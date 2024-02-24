@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ControlsOf } from '@shared/components/types/controls-of.type';
+import { ControlsOf } from '@shared/types/controls-of.type';
 import {
   IManageProject,
   IManageProjectModel,

@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ControlsOf } from '@shared/components/types/controls-of.type';
+import { ControlsOf } from '@shared/types/controls-of.type';
 import { IOption } from '@shared/interfaces/option.interface';
 import { ProjectService } from '@core/services/project.service';
 import { map } from 'rxjs';

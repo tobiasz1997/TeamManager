@@ -11,8 +11,6 @@ export class ProfilePanelComponent {
   @Input() avatar: string | undefined = undefined;
   @Output() logoutButtonClick$ = new EventEmitter<void>();
 
-  constructor() {}
-
   public handleLogout(): void {
     this.logoutButtonClick$.emit();
   }
