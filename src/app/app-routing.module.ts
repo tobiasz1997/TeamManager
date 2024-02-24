@@ -55,8 +55,8 @@ const routes: Routes = [
       {
         path: AppRoutes.profile.path,
         loadChildren: () =>
-          import('./features/manager/profile/profile.module').then(
-            m => m.ProfileModule,
+          import('@features/manager/profile/profile-page.module').then(
+            m => m.ProfilePageModule,
           ),
       },
       {

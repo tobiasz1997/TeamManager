@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from '@core/services/user.service';
 
 @Injectable()
-export class ProfileService {
+export class ProfilePageService {
   public user$ = this._userService.user$;
 
   constructor(
