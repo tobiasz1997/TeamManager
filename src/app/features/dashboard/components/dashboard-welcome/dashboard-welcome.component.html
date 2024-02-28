@@ -7,8 +7,8 @@
   <div class='welcome--title'>
     <h1>Manage your
       <div>
-          <span *ngIf='appFeatures' @myTrigger>
-            {{ appFeatures }}
+          <span *ngIf='appFeatures()' @myTrigger>
+            {{ appFeatures() }}
           </span>
       </div>
     </h1>

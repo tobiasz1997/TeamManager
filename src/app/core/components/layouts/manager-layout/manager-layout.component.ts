@@ -17,7 +17,7 @@ import { LocalStorageKeys } from '@shared/constants/local-storage-keys';
 })
 export class ManagerLayoutComponent {
   public isSidebarOpen = true;
-  public errorMessage$ = this._loggerMessageService.errorMessage$;
+  public message$ = this._loggerMessageService.message$;
 
   constructor(
     private readonly _loggerMessageService: LoggerMessagesService,

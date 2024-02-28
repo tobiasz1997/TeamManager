@@ -1,17 +1,17 @@
-<h2 class="section--title">What we offer?</h2>
-<section class="features">
-  <ng-container *ngFor="let value of arrayOfValues; let odd = odd">
-    <div class="features__section">
-      <img *ngIf="odd" class="features__section--image" [src]="value.imageSrc" [alt]="value.title" />
-      <div class="features__section--description">
+<h2 class='section--title'>What we offer?</h2>
+<section class='features'>
+  <ng-container *ngFor='let value of arrayOfValues(); let odd = odd'>
+    <div class='features__section'>
+      <img *ngIf='odd' [alt]='value.title' [src]='value.imageSrc' class='features__section--image' />
+      <div class='features__section--description'>
         <h4>
           {{value.title}}
         </h4>
         <p>
-         {{value.description}}
+          {{value.description}}
         </p>
       </div>
-      <img *ngIf="!odd" class="features__section--image" [src]="value.imageSrc" [alt]="value.title" />
+      <img *ngIf='!odd' [alt]='value.title' [src]='value.imageSrc' class='features__section--image' />
     </div>
   </ng-container>
 </section>

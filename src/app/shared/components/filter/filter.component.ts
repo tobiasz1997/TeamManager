@@ -9,7 +9,6 @@ import { IOption } from '@shared/interfaces/option.interface';
 })
 export class FilterComponent {
   @Input() data: Array<IFilterItem>;
-
 }
 
 export interface IFilterItem {

@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IManageTask, IManageTaskModel } from '@features/manager/tasks/components/manage-task/manage-task.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ControlsOf } from '@shared/components/types/controls-of.type';
+import { ControlsOf } from '@shared/types/controls-of.type';
 
 @Component({
   selector: 'tm-manage-task',

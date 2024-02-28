@@ -49,7 +49,7 @@ export class WindowPropsService implements OnDestroy {
     this._destroy$.complete();
   }
 
-  private setMediaBreakpoint(width: number): void {
+  public setMediaBreakpoint(width: number): void {
     if (width <= 640) {
       this._breakpoint$.next(ScreenSizesEnum.Mobile);
     } else if (width >= 641 && width <= 768) {

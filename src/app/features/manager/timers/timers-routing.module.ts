@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TimersComponent } from '@features/manager/timers/timers.component';
 import { AppRoutes } from '../../../app.routes';
 
 const TimersRoutes: Routes = [
   {
     path: '',
-    component: TimersComponent,
+    loadChildren: () => import('./timers-page/timers-page.module').then(m => m.TimersPageModule),
   },
   {
     path: AppRoutes.projects.path,
-    loadChildren: () => import('./pages/projects/projects.module').then(m => m.ProjectsModule),
+    loadChildren: () => import('./projects-page/projects-page.module').then(m => m.ProjectsPageModule),
   },
 ];
 

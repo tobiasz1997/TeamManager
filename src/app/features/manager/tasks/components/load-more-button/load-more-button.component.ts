@@ -8,11 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class LoadMoreButtonComponent {
   @Output() onLoad = new EventEmitter<void>();
 
-  constructor() {
-  }
-
   public onLoadMore(): void {
     this.onLoad.next();
   }
-
 }

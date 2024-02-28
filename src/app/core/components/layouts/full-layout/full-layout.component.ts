@@ -11,7 +11,7 @@ import { UserService } from '@core/services/user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FullLayoutComponent implements OnInit {
-  public errorMessage$ = this._loggerMessageService.errorMessage$;
+  public message$ = this._loggerMessageService.message$;
 
   constructor(
     private readonly _loggerMessageService: LoggerMessagesService,

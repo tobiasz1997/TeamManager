@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "team-manager-angular:build:production"
+              "buildTarget": "team-manager-angular:build:production"
             },
             "development": {
-              "browserTarget": "team-manager-angular:build:development"
+              "buildTarget": "team-manager-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,25 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "team-manager-angular:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "sass",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.sass"
-            ],
-            "scripts": []
+            "buildTarget": "team-manager-angular:build"
           }
         },
         "lint": {

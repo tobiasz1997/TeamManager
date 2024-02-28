@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 
-
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
@@ -11,10 +10,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   @Output() leftArrowClick$ = new EventEmitter<void>;
   @Output() rightArrowClick$ = new EventEmitter<void>;
 
-  private _timeout: NodeJS.Timer | null = null;
-
-  constructor() {
-  }
+  private _timeout: NodeJS.Timeout | null = null;
 
   ngAfterViewInit(): void {
     if (this.isAuto) {
@@ -22,12 +18,11 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy() {
+  ngOnDestroy() {
     if (this._timeout) {
       clearInterval(this._timeout);
     }
   }
-
 
   public onLeftArrowClick(): void {
     this.leftArrowClick$.emit();

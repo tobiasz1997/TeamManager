@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IFilterItem } from '@shared/components/filter/filter.component';
 import { take } from 'rxjs';
@@ -10,7 +10,7 @@ import { PAGE_NAME } from '@shared/constants/constant';
 })
 export abstract class FilterWrapperComponent<TItem = unknown> implements OnInit {
   @Input() data: IFilterItem;
-  public value: TItem;
+  public value = signal<TItem>(null);
 
   protected constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -22,7 +22,7 @@ export abstract class FilterWrapperComponent<TItem = unknown> implements OnInit 
     this.activatedRoute.queryParams
       .pipe(take(1))
       .subscribe((params) => {
-        this.value = this.loadValueFromQueryParam(params);
+        this.value.set(this.loadValueFromQueryParam(params));
       });
   }
 

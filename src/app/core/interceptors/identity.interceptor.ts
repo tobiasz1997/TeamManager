@@ -10,7 +10,7 @@ import {
 import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
 import { IdentityClient } from '@core/api/identity-client.service';
 import { IdentityService } from '@core/services/identity.service';
-import jwtDecode, { JwtPayload } from 'jwt-decode';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { environment } from '@environment/environment';
 
 @Injectable()

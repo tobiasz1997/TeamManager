@@ -15,8 +15,8 @@ const routes: Routes = [
         path: AppRoutes.home.path,
         pathMatch: 'full',
         loadChildren: () =>
-          import('./features/dashboard/dashboard.module').then(
-            m => m.DashboardModule,
+          import('@features/dashboard/dashboard-page.module').then(
+            m => m.DashboardPageModule,
           ),
       },
     ],
@@ -28,15 +28,15 @@ const routes: Routes = [
       {
         path: AppRoutes.signIn.path,
         loadChildren: () =>
-          import('./features/auth/sign-in/sign-in.module').then(
-            m => m.SignInModule,
+          import('@features/auth/sign-in/sign-in-page.module').then(
+            m => m.SignInPageModule,
           ),
       },
       {
         path: AppRoutes.signUp.path,
         loadChildren: () =>
-          import('./features/auth/sign-up/sign-up.module').then(
-            m => m.SignUpModule,
+          import('@features/auth/sign-up/sign-up-page.module').then(
+            m => m.SignUpPageModule,
           ),
       },
     ],
@@ -48,21 +48,21 @@ const routes: Routes = [
       {
         path: AppRoutes.tasks.path,
         loadChildren: () =>
-          import('./features/manager/tasks/tasks.module').then(
-            m => m.TasksModule,
+          import('@features/manager/tasks/tasks-page.module').then(
+            m => m.TasksPageModule,
           ),
       },
       {
         path: AppRoutes.profile.path,
         loadChildren: () =>
-          import('./features/manager/profile/profile.module').then(
-            m => m.ProfileModule,
+          import('@features/manager/profile/profile-page.module').then(
+            m => m.ProfilePageModule,
           ),
       },
       {
         path: AppRoutes.timers.path,
         loadChildren: () =>
-          import('./features/manager/timers/timers.module').then(
+          import('@features/manager/timers/timers.module').then(
             m => m.TimersModule,
           ),
       },

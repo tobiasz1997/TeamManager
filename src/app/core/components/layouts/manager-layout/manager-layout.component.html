@@ -1,6 +1,6 @@
 <tm-page-loader></tm-page-loader>
 <div class='screen'>
-  <div class='screen__logger' *ngIf='(errorMessage$ | async) as message' @toastAnimation>
+  <div *ngIf='(message$ | async) as message' @toastAnimation class='screen__logger'>
     <app-toast
       [message]='message.message'
       [type]='message.type'

@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-link',
   templateUrl: './link.component.html',
-  styleUrls: ['./link.component.sass']
+  styleUrls: ['./link.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LinkComponent {
   @Input() label = '';
@@ -12,10 +13,8 @@ export class LinkComponent {
   @Input() disabled = false;
   @Output() action = new EventEmitter<void>();
 
-  constructor() { }
-
   public handleClick(): void {
-    this.action.emit();
+    !this.disabled && this.action.emit();
   }
 
 }
