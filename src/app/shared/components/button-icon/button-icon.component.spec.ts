@@ -1,23 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ButtonIconComponent } from './button-icon.component';
 
 describe('ButtonIconComponent', () => {
   let component: ButtonIconComponent;
-  let fixture: ComponentFixture<ButtonIconComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ButtonIconComponent ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(ButtonIconComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    component = new ButtonIconComponent();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should on click emit action', () => {
+    const emit = jest.spyOn(component.action, 'emit').mockReset();
+    component.handleClick();
+
+    expect(emit).toHaveBeenCalled();
+  });
+
+  it('should on click no emit action because disabled', () => {
+    const emit = jest.spyOn(component.action, 'emit').mockReset();
+    component.disabled = true;
+    component.handleClick();
+
+    expect(emit).not.toHaveBeenCalled();
   });
 });

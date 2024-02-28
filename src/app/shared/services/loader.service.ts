@@ -18,7 +18,7 @@ export class LoaderService {
   ) {
   }
 
-  setLoading(loading: boolean, url: string): void {
+  public setLoading(loading: boolean, url: string): void {
     if (!url) {
       this._logger.error(new Error('No request URL in loading service'));
     }

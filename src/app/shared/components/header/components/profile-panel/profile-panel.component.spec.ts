@@ -1,23 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProfilePanelComponent } from './profile-panel.component';
 
 describe('ProfilePanelComponent', () => {
   let component: ProfilePanelComponent;
-  let fixture: ComponentFixture<ProfilePanelComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ProfilePanelComponent ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(ProfilePanelComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new ProfilePanelComponent();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should on logout emit action', () => {
+    const emit = jest.spyOn(component.logoutButtonClick$, 'emit').mockReset();
+    component.handleLogout();
+
+    expect(emit).toHaveBeenCalled();
   });
 });

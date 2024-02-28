@@ -14,7 +14,7 @@ export class LinkComponent {
   @Output() action = new EventEmitter<void>();
 
   public handleClick(): void {
-    this.action.emit();
+    !this.disabled && this.action.emit();
   }
 
 }

@@ -1,23 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LinkComponent } from './link.component';
 
 describe('LinkComponent', () => {
   let component: LinkComponent;
-  let fixture: ComponentFixture<LinkComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LinkComponent ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(LinkComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    component = new LinkComponent();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should on click emit action', () => {
+    const emit = jest.spyOn(component.action, 'emit').mockReset();
+    component.handleClick();
+
+    expect(emit).toHaveBeenCalled();
+  });
+
+  it('should on click no emit action because disabled', () => {
+    const emit = jest.spyOn(component.action, 'emit').mockReset();
+    component.disabled = true;
+    component.handleClick();
+
+    expect(emit).not.toHaveBeenCalled();
   });
 });

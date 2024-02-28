@@ -1,10 +1,10 @@
 <tm-header></tm-header>
-<div class="layout">
-  <div class="layout__logger" *ngIf="(errorMessage$ | async) as message" @toastAnimation>
+<div class='layout'>
+  <div *ngIf='(message$ | async) as message' @toastAnimation class='layout__logger'>
     <app-toast
-      [message]="message.message"
-      [type]="message.type"
-      (closeLoggerClick$)="handleCloseLoggerMessage()"
+      (closeLoggerClick$)='handleCloseLoggerMessage()'
+      [message]='message.message'
+      [type]='message.type'
     ></app-toast>
   </div>
 </div>
