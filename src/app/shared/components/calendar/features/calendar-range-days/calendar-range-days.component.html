@@ -1,0 +1,13 @@
+<tm-calendar-table-days [buttonTemplate]='buttonTemplate' [viewDate]='viewDate()' />
+
+<ng-template #buttonTemplate let-day='day'>
+  <tm-calendar-day-button
+    (dayClicked)='onDayClick($event)'
+    (dayHovered)='setHoveredDate($event)'
+    [day]='day'
+    [hoveredDate]='hoveredDate()'
+    [selectedDateFrom]='selectedDateFrom()'
+    [selectedDateTo]='selectedDateTo()'
+    type='range'
+  />
+</ng-template>

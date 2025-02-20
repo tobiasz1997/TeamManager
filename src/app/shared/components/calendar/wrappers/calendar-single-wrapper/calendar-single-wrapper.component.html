@@ -1,0 +1,6 @@
+<tm-calendar-wrapper>
+  <tm-calendar-header (nextClick)='handleNextMonth()' (previousClick)='handlePreviousMonth()'
+                      [viewDate]='viewDate()'></tm-calendar-header>
+  <tm-calendar-single-day (selectDay)='handleDaySelected($event)' [selectedDate]='selectedDate()'
+                          [viewDate]='viewDate()'></tm-calendar-single-day>
+</tm-calendar-wrapper>

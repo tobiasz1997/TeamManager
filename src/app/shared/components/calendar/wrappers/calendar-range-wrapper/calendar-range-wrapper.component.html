@@ -1,0 +1,10 @@
+<tm-calendar-wrapper>
+  <tm-calendar-header (nextClick)='handleNextMonth()' (previousClick)='handlePreviousMonth()'
+                      [viewDate]='viewDate()'></tm-calendar-header>
+  <tm-calendar-range-days (selectDayFrom)='handleDaySelectedFrom($event)'
+                          (selectDayTo)='handleDaySelectedTo($event)'
+                          [selectedDateFrom]='selectedDateFrom()'
+                          [selectedDateTo]='selectedDateTo()'
+                          [viewDate]='viewDate()'
+  ></tm-calendar-range-days>
+</tm-calendar-wrapper>

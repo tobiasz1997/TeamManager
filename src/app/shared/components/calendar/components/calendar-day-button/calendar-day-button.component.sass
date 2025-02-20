@@ -1,0 +1,64 @@
+@import 'variables'
+
+.day-button-empty
+  width: 44px
+  height: 44px
+
+.day-button
+  text-align: center
+  width: 44px
+  height: 44px
+  cursor: pointer
+  background: transparent
+  border: none
+  border-radius: $border-radius-lg
+  color: $tertiary-color
+  font-size: $font-sm
+  font-weight: $font-weight-medium
+  padding: 0
+  position: relative
+
+  &:disabled
+    opacity: 50%
+
+  &:hover:not(&--selected-from):not(&--selected-to):not(&--selected-single):not(&--hovered):not(&--hovered-range)
+    background: $gray-200
+
+  &--hovered-range
+    border-radius: 0
+    background: $gray-200
+    opacity: 50%
+
+  &--range
+    background: $gray-200
+    border-radius: 0
+
+  &--hovered
+    color: $white
+    background: $tertiary-color
+    border-radius: 0 4px 4px 0
+    opacity: 50%
+
+  &--selected
+    &-from
+      color: $white
+      background: $tertiary-color
+      border-radius: 4px 0 0 4px
+
+    &-to
+      color: $white
+      background: $tertiary-color
+      border-radius: 0 4px 4px 0
+
+    &-single
+      color: $white
+      background: $tertiary-color
+
+  &--today
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center

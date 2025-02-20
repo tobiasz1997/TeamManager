@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Pon</th>
+    <th>Wt</th>
+    <th>Śr</th>
+    <th>Czw</th>
+    <th>Pt</th>
+    <th>So</th>
+    <th>Nd</th>
+  </tr>
+  @for (week of daysMatrix(); track week; let row = $index) {
+    <tr>
+      @for (day of week; track day; let column = $index) {
+        <td>
+          <ng-container *ngTemplateOutlet='buttonTemplate; context: { day, row, column  }'>
+          </ng-container>
+        </td>
+      }
+    </tr>
+  }
+</table>

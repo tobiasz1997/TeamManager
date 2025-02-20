@@ -1,0 +1,19 @@
+<div class='header'>
+
+  <button (click)='onPreviousClick()' class='arrow_button'>
+    <span class='material-icons-outlined'>arrow_back_ios</span>
+  </button>
+
+  <button class='select_button'>
+    {{ year() }}
+  </button>
+
+  <button class='select_button'>
+    {{ month() | calendarMonthName }}
+  </button>
+
+  <button (click)='onNextClick()' class='arrow_button'>
+    <span class='material-icons-outlined'>arrow_forward_ios</span>
+  </button>
+
+</div>

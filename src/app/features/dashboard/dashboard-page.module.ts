@@ -6,6 +6,7 @@ import { SharedModule } from '@shared/shared.module';
 import { ShapeDividerSvgComponent } from './components/shape-divider-svg/shape-divider-svg.component';
 import { DashboardWelcomeComponent } from './components/dashboard-welcome/dashboard-welcome.component';
 import { DashboardAppFeaturesComponent } from './components/dashboard-app-features/dashboard-app-features.component';
+import { CalendarComponent } from '@shared/components/calendar/calendar.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { DashboardAppFeaturesComponent } from './components/dashboard-app-featur
     SharedModule,
     CommonModule,
     DashboardPageRoutingModule,
+    CalendarComponent,
   ],
   declarations: [
     DashboardPageComponent,

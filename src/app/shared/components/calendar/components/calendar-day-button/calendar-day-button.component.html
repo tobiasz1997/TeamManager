@@ -1,0 +1,37 @@
+@switch (type()) {
+  @case ('single') {
+    @if (day) {
+      <button class='day-button'
+              [class.day-button--selected-single]='day() | equalDay: selectedDate()'
+              (click)='dayClicked.next(day())'
+      >{{ day() | day }}
+        @if (day() | equalDay: today()) {
+          <div class='day-button--today'>*</div>
+        }
+      </button>
+    } @else {
+      <div class='day-button-empty'></div>
+    }
+  }
+  @case ('range') {
+    @if (day()) {
+      <button class='day-button'
+              [disabled]='isDayFromSelected() && day() | lessDay: selectedDateFrom()'
+              [class.day-button--selected-from]='day() | equalDay: selectedDateFrom()'
+              [class.day-button--selected-to]='day() | equalDay: selectedDateTo()'
+              [class.day-button--hovered]='day() | equalDay: hoveredDate()'
+              [class.day-button--range]='day() | rangeDays: selectedDateFrom():selectedDateTo()'
+              [class.day-button--hovered-range]='day() | rangeDays: selectedDateFrom():hoveredDate()'
+              (click)='dayClicked.next(day())'
+              (mouseenter)='dayHovered.next(day())'
+              (mouseleave)='dayHovered.next(null)'
+      >{{ day() | day }}
+        @if (day() | equalDay: today()) {
+          <div class='day-button--today'>*</div>
+        }
+      </button>
+    } @else {
+      <div class='day-button-empty'></div>
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@import 'variables'
+
+.header
+  display: flex
+  justify-content: space-between
+  width: 100%
+  margin-bottom: 16px
+
+  > * + *
+    margin-left: 16px
+
+.select_button
+  justify-content: center
+  align-items: center
+  display: flex
+  width: 88px
+  height: 44px
+  cursor: pointer
+  border-radius: $border-radius-lg
+  border: 2px solid $tertiary-color
+  color: $tertiary-color
+  font-size: $font-sm
+  font-weight: $font-weight-bold
+
+  &:hover
+    box-shadow: $box-shadow-md-hover
+
+.arrow_button
+  justify-content: center
+  align-items: center
+  display: flex
+  width: 44px
+  height: 44px
+  cursor: pointer
+  border-radius: $border-radius-lg
+  border: 2px solid $tertiary-color
+
+  > span
+    color: $tertiary-color
+
+  &:hover
+    box-shadow: $box-shadow-md-hover
